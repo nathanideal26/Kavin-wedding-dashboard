@@ -1,1 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navinsamy & Kavya - Wedding Event Live Control Dashboard</title>
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <script>
+        // MASTER CAR CONVOY LIST DATA (OFFICIAL LIST)
+        var CAR_CONVOY_LIST = [
+            // GROOM CONVOY (HOUSE TO HALL - 2 WAY)
+            {
+                id: 'car-1',
+                role: 'Groom Main Car #1 (Lead)',
+                plate: 'SAB 1111 V',
+                model: 'Porsche',
+                driver: 'Saccin',
+                passengers: ['Mr Navinsamy Harikrishnan (Groom)'],
+                position: 'Convoy Position #1 (Lead)',
+                deptTime: '09:15 AM',
+                route: 'Groom House ➔ Temple (2-Way)'
+            },
+            {
+                id: 'car-2',
+                role: 'Groom Family Car #2',
+                plate: 'VMP 1111',
+                model: 'Denza',
+                driver: 'Victor',
+                passengers: ['Dato V Harikrishnan', 'Mehgulan Harikrishnan', 'Mano Uncle', 'Ayya Samy'],
+                position: 'Convoy Position #2',
+                deptTime: '09:15 AM',
+                route: 'Groom House ➔ Temple (2-Way)'
+            },
+            {
+                id: 'car-3',
+                role: 'Groom Family Car #3',
+                plate: 'VHR 1111',
+                model: 'Toyota Alphard',
+                driver: 'Mano Uncle Team',
+                passengers: ['Mr Veerasamy Harikrishnan', 'Ms Sus Shanthi', 'Singaravelan', 'Blessilda'],
+                position: 'Convoy Position #3',
+                deptTime: '09:15 AM',
+                route: 'Groom House ➔ Temple (2-Way)'
+            },
+            {
+                id: 'car-4',
+                role: 'Groom Escort Car #4',
+                plate: 'CEH 1111',
+                model: 'Mercedes S-Class',
+                driver: 'Senthil',
+                passengers: ['Jayakumar', 'Salma', 'Jegadish Uncle India'],
+                position: 'Convoy Position #4',
+                deptTime: '09:15 AM',
+                route: 'Groom House ➔ Temple (2-Way)'
+            },
+            // BRIDE CONVOY (HOTEL TO HALL - 2 WAY)
+            {
+                id: 'car-5',
+                role: 'Bride Main Car #1 (Lead)',
+                plate: 'SAB 1111 H',
+                model: 'BMW i7',
+                driver: 'Shankar',
+                passengers: ['Ms Kavya Cynthia (Bride)', 'Ms Sonashreya', 'Ms Nirvinaah'],
+                position: 'Bride Convoy #1 (Lead)',
+                deptTime: '09:40 AM',
+                route: 'Hotel ➔ Temple (2-Way)'
+            },
+            {
+                id: 'car-6',
+                role: 'Bride Family Car #2',
+                plate: 'PLR 1111',
+                model: 'Toyota Vellfire',
+                driver: 'Michael',
+                passengers: ['Mr Sathiya', 'Ms Uma', 'Deepa'],
+                position: 'Bride Convoy #2',
+                deptTime: '09:40 AM',
+                route: 'Hotel ➔ Temple (2-Way)'
+            },
+            {
+                id: 'car-7',
+                role: 'Bride Family Van #3 (9-Seater)',
+                plate: 'VLV 3181',
+                model: 'Mano Uncle Van (9-Seater)',
+                driver: 'Mano Uncle Team',
+                passengers: ['Tata', 'Amama', 'Atte', 'Mama', 'Ravi', 'Saanjey', 'Vijay', 'Dhivya'],
+                position: 'Bride Convoy #3 (Departs Early)',
+                deptTime: '09:20 AM (Leaves Earlier)',
+                route: 'Hotel ➔ Temple (Parked Elsewhere After Drop Off)'
+            }
+        ];
+
+        // SPARE CARS LIST
+        var SPARE_CARS = [
+            { model: 'Toyota Camry', plate: 'PJL 2899' },
+            { model: 'Mazda', plate: 'PPA 564' }
+        ];
+
+        // TEMPLE PARKING ALLOCATION (8 PARKING SPOTS INSIDE TEMPLE)
+        var TEMPLE_PARKING_LIST = [
+            { spot: 1, model: 'Toyota Alphard', plate: 'VHR 1111' },
+            { spot: 2, model: 'Denza', plate: 'VMP 1111' },
+            { spot: 3, model: 'Mercedes S-Class', plate: 'CEH 1111' },
+            { spot: 4, model: 'Porsche', plate: 'SAB 1111 V' },
+            { spot: 5, model: 'BMW i7', plate: 'SAB 1111 H' },
+            { spot: 6, model: 'Toyota Vellfire', plate: 'PLR 1111' },
+            { spot: 7, model: 'Vellfire (Peripa)', plate: 'SK 1991 C' },
+            { spot: 8, model: 'BMW X5', plate: 'ANJ 1991' }
+        ];
+
+        // MASTER ITINERARY DATA WITH FULL PIC & WALKING LISTS
+        var WEDDING_EVENTS = [
+            {
+                id: 'evt-1',
+                time: '09:15 AM',
+                startMins: 555,
+                endMins: 570,
+                title: 'Groom Departure From House To Hall',
+                todo: [
+                    'Groom departure confirmed from home',
+                    'Car leader & drivers ready (Saccin, Victor, Mano Uncle Team, Senthil)',
+                    'Groom Convoy Positioning verified (1. Porsche ➔ 2. Denza ➔ 3. Alphard ➔ 4. S Class)',
+                    'Car 1 (Porsche - SAB 1111 V) ready with Groom Navinsamy',
+                    'Car 2 (Denza - VMP 1111) loaded with Dato V Harikrishnan & family',
+                    'Car 3 (Alphard - VHR 1111) loaded with Mr Veerasamy Harikrishnan & family',
+                    'Car 4 (S Class - CEH 1111) loaded with Jayakumar & guests'
+                ],
+                responsible: ['Saccin (Driver)', 'Victor (Driver)', 'Mano Uncle Team', 'Senthil (Driver)', 'Groom Convoy Leader'],
+                people: ['Navinsamy (Groom)', 'Dato V Harikrishnan', 'Mehgulan Harikrishnan', 'Mano Uncle', 'Ayya Samy', 'Mr Veerasamy Harikrishnan', 'Ms Sus Shanthi', 'Singaravelan', 'Blessilda', 'Jayakumar', 'Salma', 'Jegadish Uncle India'],
+                walkingList: [
+                    '1. Porsche SAB 1111 V (Driver: Saccin | Groom Navinsamy)',
+                    '2. Denza VMP 1111 (Driver: Victor | Dato V Harikrishnan, Mehgulan, Mano Uncle, Ayya Samy)',
+                    '3. Alphard VHR 1111 (Driver: Mano Uncle Team | Mr Veerasamy Harikrishnan, Ms Sus Shanthi, Singaravelan, Blessilda)',
+                    '4. S Class CEH 1111 (Driver: Senthil | Jayakumar, Salma, Jegadish Uncle India)'
+                ],
+                song: '',
+                led: '',
+                important: 'Maintain exact convoy sequence: Porsche ➔ Denza ➔ Alphard ➔ S Class. Reverse park upon arrival at temple!'
+            },
+            {
+                id: 'evt-2',
+                time: '09:30 AM',
+                startMins: 570,
+                endMins: 580,
+                title: 'Groom Arrival At Temple',
+                todo: [
+                    'Groom arrived at temple main entrance',
+                    'All 6 main vehicles reverse parked inside temple according to convoy order',
+                    'Welcome Maalai ready and presented',
+                    'Aarti ceremony completed',
+                    'Pattam ceremony completed',
+                    'Photoshoot completed at entrance arch'
+                ],
+                responsible: ['Car Parking Leader', 'Receiving Leader', 'Ritual Leader', 'Entrance Leader'],
+                people: ['Navinsamy (Groom)', 'Dato V Harikrishnan & Family', 'Receiving Family', 'Aarti Ladies'],
+                walkingList: [
+                    '1. Groom Arrival Convoy entering temple gate',
+                    '2. Groom Navinsamy escorted by Best Man & Elders',
+                    '3. Receiving Family presenting Welcome Maalai & Aarti'
+                ],
+                song: 'Nadaswaram Welcoming Thavil Melam',
+                led: 'Gold Traditional Welcoming Motif',
+                important: 'All 6 convoy cars MUST be reverse parked according to convoy order inside temple.'
+            },
+            {
+                id: 'evt-3',
+                time: '09:40 AM',
+                startMins: 580,
+                endMins: 585,
+                title: 'Bride Departs From Hotel / Palm Villa',
+                todo: [
+                    'Mano Uncle Van VLV 3181 departed early with elders (Tata, Amama, Atte, Mama, Ravi, Saanjey, Vijay, Dhivya)',
+                    'Bride main car BMW i7 (SAB 1111 H) ready with Driver Shankar & Bride Kavya',
+                    'Bride family car Vellfire (PLR 1111) ready with Driver Michael',
+                    'Bride Convoy Positioning verified (1. BMW i7 ➔ 2. Vellfire)',
+                    'Bride departure confirmed to temple'
+                ],
+                responsible: ['Shankar (Driver)', 'Michael (Driver)', 'Mano Uncle Team (Van Driver)', 'Bride Convoy Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Ms Sonashreya', 'Ms Nirvinaah', 'Mr Sathiya', 'Ms Uma', 'Deepa', 'Tata', 'Amama', 'Atte', 'Mama', 'Ravi', 'Saanjey', 'Vijay', 'Dhivya'],
+                walkingList: [
+                    '1. Mano Uncle Van VLV 3181 (Leaves earlier to hall)',
+                    '2. BMW i7 SAB 1111 H (Driver: Shankar | Bride Kavya, Ms Sonashreya, Ms Nirvinaah)',
+                    '3. Vellfire PLR 1111 (Driver: Michael | Mr Sathiya, Ms Uma, Deepa)'
+                ],
+                song: '',
+                led: '',
+                important: 'Mano Uncle Van VLV 3181 leaves earlier to hall and will park elsewhere after drop off.'
+            },
+            {
+                id: 'evt-4',
+                time: '09:45 AM',
+                startMins: 585,
+                endMins: 595,
+                title: 'Groom First Entrance Procession',
+                todo: [
+                    'Groom entrance procession lineup formed',
+                    'Nadaswaram & Thavil playing entrance beat',
+                    'Groom walked down aisle to stage',
+                    'Groom seated at Manavarai (stage)'
+                ],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Technical Leader'],
+                people: ['Navinsamy (Groom)', 'Harikrishnan (Father)', 'Groom Mother', 'Maternal Uncles', 'Flower Girls'],
+                walkingList: [
+                    '1. Nadaswaram & Thavil Musicians (Leading)',
+                    '2. Flower Girls & Garland Bearers',
+                    '3. Groom Navinsamy accompanied by Maternal Uncles & Best Man',
+                    '4. Groom Parents & Close Family Members'
+                ],
+                song: 'Traditional Mangala Vaathiyam - Groom Procession',
+                led: 'Dynamic Golden Rangoli & Royal Arch Visual',
+                important: 'Play high-tempo entrance music when Groom enters main hall.'
+            },
+            {
+                id: 'evt-5',
+                time: '09:55 AM - 10:10 AM',
+                startMins: 595,
+                endMins: 610,
+                title: 'Groom First Ritual & Dressing Transition',
+                todo: [
+                    'Ganesh Puja & wristband (Kappu) tied',
+                    'Priest blessed Groom initial prayers',
+                    'Groom escorted to Groom Dressing Room for attire check'
+                ],
+                responsible: ['Ritual Leader', 'Dressing Leader', 'Priest (Iyer)'],
+                people: ['Navinsamy (Groom)', 'Priest (Iyer)', 'Groom Best Man', 'Ritual Assistants'],
+                walkingList: [
+                    '1. Groom escorted from Stage to Groom Dressing Room'
+                ],
+                song: '',
+                led: '',
+                important: 'Prepare Muhurtham attire (Veshti & Angavastram) in Groom dressing room.'
+            },
+            {
+                id: 'evt-6',
+                time: '10:00 AM',
+                startMins: 600,
+                endMins: 610,
+                title: 'Bride Arrival At Temple',
+                todo: [
+                    'Bride car arrived at temple porch',
+                    'Rosewater spraying & flower welcoming completed',
+                    'Bride escorted to Bride Dressing Room',
+                    'Makeup artist ready for final touchups'
+                ],
+                responsible: ['Receiving Leader', 'Dressing Leader', 'Entrance Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Bride Parents', 'Bridesmaids', 'Receiving Team'],
+                walkingList: [
+                    '1. Bride Kavya escorted from Car SAB 1111 H by Bridesmaids',
+                    '2. Receiving Team with Rosewater & Flower Petals',
+                    '3. Direct ushering to Bride Dressing Room'
+                ],
+                song: 'Soft Flute & Veena Welcoming Melody',
+                led: 'Soft Rose Gold Floral Petal Cascade',
+                important: 'Escort Bride directly to dressing room upon arrival.'
+            },
+            {
+                id: 'evt-7',
+                time: '10:10 AM - 10:25 AM',
+                startMins: 610,
+                endMins: 625,
+                title: 'Bride First Entrance & First Ritual',
+                todo: [
+                    'Bride first entrance procession organized',
+                    'Bride arrived on stage',
+                    'Preliminary Bride Puja completed',
+                    'Bride escorted to Dressing Room for Koorai Saree change'
+                ],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Ritual Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Maternal Uncles', 'Bridesmaids', 'Priest (Iyer)'],
+                walkingList: [
+                    '1. Bridesmaids with Flower Canopy / Lamps',
+                    '2. Bride Kavya Cynthia walked by Maternal Uncles',
+                    '3. Bride Mother & Sister following procession'
+                ],
+                song: 'Gowri Kalyanam / Divine Bridal Entrance Hymn',
+                led: 'Divine Lotus Flower Bloom Visual',
+                important: 'Ensure smooth transition for Koorai Saree attire change.'
+            },
+            {
+                id: 'evt-8',
+                time: '10:35 AM - 10:40 AM',
+                startMins: 635,
+                endMins: 640,
+                title: 'Groom Second Entrance & Parents On Stage',
+                todo: [
+                    'Groom second attire change verified',
+                    'Groom Second Entrance executed to stage',
+                    'Bride Parents & Groom Parents seated on stage'
+                ],
+                responsible: ['Stage Leader', 'Ritual Leader', 'Entrance Leader'],
+                people: ['Navinsamy (Groom)', 'Groom Parents', 'Bride Parents', 'Stage Crew'],
+                walkingList: [
+                    '1. Groom Navinsamy in Muhurtham Veshti',
+                    '2. Groom Parents & Bride Parents ushering to Stage Chairs'
+                ],
+                song: 'Royal Mangala Vaathiyam Beat',
+                led: 'Golden Temple Pillars Motif',
+                important: 'Confirm both pairs of parents are comfortably seated on stage.'
+            },
+            {
+                id: 'evt-9',
+                time: '10:55 AM - 11:00 AM',
+                startMins: 655,
+                endMins: 660,
+                title: 'Bride Second Entrance (Koorai Saree)',
+                todo: [
+                    'Bride Koorai Saree drape verified complete',
+                    'Bride Second Entrance walk executed',
+                    'Bride seated on stage next to Groom',
+                    'Buffet food service line opened for guests'
+                ],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Food Leader'],
+                people: ['Kavya Cynthia (Bride in Koorai Saree)', 'Maternal Uncles', 'Bridesmaids', 'Tray Bearers'],
+                walkingList: [
+                    '1. Flower Girls with Rose Petals',
+                    '2. Koorai Saree Bride Kavya escorted by Maternal Uncles',
+                    '3. Relatives carrying auspicious trays (Seer Varisai)'
+                ],
+                song: 'Koorai Saree Entrance Traditional Nadaswaram',
+                led: 'Golden Temple Pillars & Gold Dust Effect',
+                important: 'Open guest buffet food line simultaneously with second entrance.'
+            },
+            {
+                id: 'evt-10',
+                time: '11:15 AM - 11:20 AM',
+                startMins: 675,
+                endMins: 680,
+                title: 'Ring & Talli Tying Ceremony (Muhurtham)',
+                isTalli: true,
+                todo: [
+                    'Talli / Thali gold chain verified on tray',
+                    'Talli tray passed around hall for guest blessings',
+                    'Yellow flower petals & Akshatai rice distributed',
+                    'Priest gave final nod for Muhurtham minute',
+                    'Ketty Mellam team ready on standby',
+                    'Groom tied three knots of Talli around Bride neck',
+                    'Flower shower showered over couple',
+                    'Garland exchange (Maalai Maatral) completed',
+                    'Pottu / Sindoor application completed'
+                ],
+                responsible: ['Ritual Leader', 'Stage Leader', 'Technical Leader', 'Vendor Leader'],
+                people: ['Navinsamy (Groom)', 'Kavya Cynthia (Bride)', 'Priest (Iyer)', 'Groom Parents', 'Bride Parents', 'Talli Tray Carriers', 'Ketty Mellam Team'],
+                walkingList: [
+                    '1. Talli Tray Bearers passing tray among elders in hall',
+                    '2. Priest blessing Talli on Stage',
+                    '3. Groom Navinsamy & Bride Kavya at central Manavarai'
+                ],
+                song: 'LOUD KETTY MELLAM & THAVIL RHYTHM',
+                led: 'BRIGHT GOLD MUHURTHAM ANIMATION',
+                important: 'CRITICAL: At 11:17 AM exact signal, Ketty Mellam MUST play at full volume!'
+            },
+            {
+                id: 'evt-11',
+                time: '11:20 AM ONWARDS',
+                startMins: 680,
+                endMins: 750,
+                title: 'Stage Photoshoot & Stage Games',
+                todo: [
+                    'VIPs & immediate family photoshoot completed',
+                    'General guest photo line managed',
+                    'Ring searching game in brass pot conducted',
+                    'Ang Pao receiving desk active'
+                ],
+                responsible: ['Stage Leader', 'Vendor Leader (Photographer)', 'Ang Pao Leader'],
+                people: ['Newlyweds (Navinsamy & Kavya)', 'VIP Guests', 'Family Members', 'Photographer Team'],
+                walkingList: [
+                    '1. VIP Family Photo Queue',
+                    '2. General Guests Photo Queue'
+                ],
+                song: 'Joyful Ambient Melodies',
+                led: 'Couple Name Banner & Photo Gallery Slideshow',
+                important: 'Maintain smooth photo queue for guests.'
+            },
+            {
+                id: 'evt-12',
+                time: '01:00 PM - 02:00 PM',
+                startMins: 780,
+                endMins: 840,
+                title: 'Couple Lunch & Event Conclusion',
+                todo: [
+                    'Couple & family ushered to VIP lunch table',
+                    'Caterer served special bridal meal',
+                    'Vendor tokens & Ang Paos distributed',
+                    'Return vehicles standby at porch (Porsche SAB 1111 V & BMW i7 SAB 1111 H)'
+                ],
+                responsible: ['Food Leader', 'Saccin (Driver)', 'Shankar (Driver)', 'Ang Pao Leader'],
+                people: ['Newlyweds (Navinsamy & Kavya)', 'Parents', 'Transport Crew'],
+                walkingList: [
+                    '1. Couple & Parents escorted to VIP Dining Area',
+                    '2. Departure to Return Vehicles'
+                ],
+                song: '',
+                led: 'Thank You For Blessing Our Wedding',
+                important: 'Ensure couple enjoys quiet lunch before departure.'
+            }
+        ];
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .gold-border {
+            border: 1.5px solid #D4AF37;
+        }
+
+        .gold-border-thick {
+            border: 2px solid #D4AF37;
+        }
+
+        .gold-glow-card {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+            border: 2px solid #D4AF37;
+            background: #FFFDF5;
+        }
+
+        /* Touch-friendly Large Checkbox for Mobile & iPad */
+        .large-checkbox {
+            width: 28px;
+            height: 28px;
+            accent-color: #10B981;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        /* Smooth tab styling */
+        .active-tab {
+            background-color: #D4AF37 !important;
+            color: #FFFFFF !important;
+            border-color: #B89220 !important;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+        }
+        .inactive-tab {
+            background-color: #FFFFFF !important;
+            color: #374151 !important;
+            border: 1.5px solid #E5E7EB !important;
+        }
+        .inactive-tab:hover {
+            background-color: #FFFDF5 !important;
+            border-color: #D4AF37 !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- CLEAN LUXURY HEADER -->
+    <header class="bg-white border-b border-amber-200 px-4 py-5 sm:px-8 text-center relative shadow-xs">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-1.5">
+            <!-- Couple Names & Interlocking Rings -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-slate-900 tracking-wider">
+                    NAVINSAMY
+                </h1>
+
+                <!-- Interlocking Gold Rings Graphic -->
+                <div class="w-10 h-7 flex items-center justify-center" title="Interlocking Wedding Rings">
+                    <svg class="w-10 h-7 drop-shadow-sm" viewBox="0 0 100 60" fill="none">
+                        <circle cx="36" cy="30" r="22" stroke="url(#goldRing1)" stroke-width="6" />
+                        <circle cx="64" cy="30" r="22" stroke="url(#goldRing2)" stroke-width="6" />
+                        <defs>
+                            <linearGradient id="goldRing1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFF5D6" />
+                                <stop offset="50%" stop-color="#D4AF37" />
+                                <stop offset="100%" stop-color="#8A6511" />
+                            </linearGradient>
+                            <linearGradient id="goldRing2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FFEAA7" />
+                                <stop offset="50%" stop-color="#F5D061" />
+                                <stop offset="100%" stop-color="#996515" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-slate-900 tracking-wider">
+                    KAVYA
+                </h1>
+            </div>
+
+            <!-- Date & Location -->
+            <div class="text-xs sm:text-sm font-bold text-amber-800 uppercase tracking-widest mt-1">
+                📅 23 AUGUST 2026
+            </div>
+            <div class="text-xs text-slate-500 font-medium max-w-md">
+                📍 Jalan Baru Muniswarar Temple, Perai, Pulau Pinang
+            </div>
+        </div>
+    </header>
+
+    <!-- 4 NAVIGATION TABS (Includes Dedicated CAR CONVOY TAB) -->
+    <div class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 py-3 px-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-3">
+            <button id="tab-btn-agenda" onclick="switchTab('AGENDA')" class="active-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>📅</span>
+                <span>AGENDA</span>
+            </button>
+            <button id="tab-btn-details" onclick="switchTab('DETAILS')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>👥</span>
+                <span>JOB DETAILS</span>
+            </button>
+            <button id="tab-btn-transport" onclick="switchTab('TRANSPORT')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>🚗</span>
+                <span>CAR CONVOY</span>
+            </button>
+            <button id="tab-btn-checklist" onclick="switchTab('CHECKLIST')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>✅</span>
+                <span>CHECKLIST</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        <!-- TAB 1 — AGENDA VIEW -->
+        <div id="tab-view-agenda" class="space-y-4"></div>
+
+        <!-- TAB 2 — JOB DETAILS VIEW -->
+        <div id="tab-view-details" class="space-y-6 hidden"></div>
+
+        <!-- TAB 3 — CAR CONVOY LIST VIEW -->
+        <div id="tab-view-transport" class="space-y-6 hidden"></div>
+
+        <!-- TAB 4 — PROGRESS CHECKLIST VIEW -->
+        <div id="tab-view-checklist" class="space-y-6 hidden"></div>
+    </main>
+
+    <!-- CONFIRMATION RESET MODAL -->
+    <div id="reset-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 rounded-2xl gold-border max-w-sm w-full space-y-4 shadow-xl text-center">
+            <h3 class="font-cinzel font-bold text-lg text-slate-900">
+                RESET ALL CHECKLIST?
+            </h3>
+            <p class="text-xs text-slate-600">
+                Are you sure you want to uncheck all completed tasks and reset vehicle statuses?
+            </p>
+            <div class="flex items-center justify-center gap-3 pt-2">
+                <button onclick="closeResetModal()" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs">
+                    CANCEL
+                </button>
+                <button onclick="executeResetAll()" class="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl text-xs">
+                    YES, RESET
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-white border-t border-slate-200 py-6 px-4 text-center text-xs text-slate-500 space-y-1">
+        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-900 tracking-widest text-sm">
+            <span>NAVINSAMY</span>
+            <span class="text-red-500">♥</span>
+            <span>KAVYA</span>
+        </div>
+        <div class="text-[11px] text-amber-800 font-semibold">
+            23 • 08 • 2026 💍
+        </div>
+    </footer>
+
+    <script>
+        var STORAGE_KEY_TASKS = 'nk_wedding_tasks_v2';
+        var STORAGE_KEY_CAR_STATUS = 'nk_wedding_car_status_v2';
+        
+        var savedTasks = JSON.parse(localStorage.getItem(STORAGE_KEY_TASKS) || '{}');
+        var savedCarStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_CAR_STATUS) || '{}');
+        var currentTab = 'AGENDA';
+
+        function saveTaskState() {
+            localStorage.setItem(STORAGE_KEY_TASKS, JSON.stringify(savedTasks));
+        }
+
+        function saveCarStatusState() {
+            localStorage.setItem(STORAGE_KEY_CAR_STATUS, JSON.stringify(savedCarStatus));
+        }
+
+        function isTaskDone(evtId, taskIdx) {
+            return savedTasks[evtId + '_' + taskIdx] === true;
+        }
+
+        function getCarStatus(carId) {
+            return savedCarStatus[carId] || 'STANDBY';
+        }
+
+        function setCarStatus(carId, status) {
+            savedCarStatus[carId] = status;
+            saveCarStatusState();
+            renderAllViews();
+        }
+
+        function getEventProgress(evt) {
+            var total = evt.todo.length;
+            var done = 0;
+            for (var i = 0; i < total; i++) {
+                if (isTaskDone(evt.id, i)) done++;
+            }
+            return { done: done, total: total, isAllDone: total > 0 && done === total };
+        }
+
+        function getOverallMetrics() {
+            var totalTasks = 0;
+            var completedTasks = 0;
+
+            WEDDING_EVENTS.forEach(function(evt) {
+                totalTasks += evt.todo.length;
+                for (var i = 0; i < evt.todo.length; i++) {
+                    if (isTaskDone(evt.id, i)) completedTasks++;
+                }
+            });
+
+            var percent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            return { total: totalTasks, completed: completedTasks, percent: percent };
+        }
+
+        function getCurrentMinutes() {
+            var now = new Date();
+            return now.getHours() * 60 + now.getMinutes();
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            var tabs = ['agenda', 'details', 'transport', 'checklist'];
+            for (var i = 0; i < tabs.length; i++) {
+                var t = tabs[i];
+                var btn = document.getElementById('tab-btn-' + t);
+                var view = document.getElementById('tab-view-' + t);
+                if (t === tab.toLowerCase()) {
+                    btn.className = "active-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                    view.classList.remove('hidden');
+                } else {
+                    btn.className = "inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                    view.classList.add('hidden');
+                }
+            }
+            renderAllViews();
+        }
+
+        function renderAgendaView() {
+            var currentMins = getCurrentMinutes();
+            var html = '<div class="space-y-3">';
+
+            WEDDING_EVENTS.forEach(function(evt) {
+                var prog = getEventProgress(evt);
+                var isNow = currentMins >= evt.startMins && currentMins <= evt.endMins;
+                
+                var statusBadge = prog.isAllDone 
+                    ? '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">✅ DONE</span>'
+                    : isNow 
+                    ? '<span class="px-3 py-1 bg-amber-400 text-slate-900 text-xs font-bold rounded-full animate-pulse">🟡 NOW</span>'
+                    : '<span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">⬜ PENDING</span>';
+
+                var cardBg = evt.isTalli 
+                    ? 'gold-glow-card' 
+                    : isNow 
+                    ? 'bg-amber-50/70 gold-border' 
+                    : prog.isAllDone 
+                    ? 'bg-emerald-50/40 border border-emerald-200' 
+                    : 'bg-white border border-slate-200';
+
+                html += 
+                    '<div class="p-4 rounded-2xl transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs ' + cardBg + '">' +
+                        '<div class="flex items-start gap-3.5">' +
+                            '<div class="bg-white px-3 py-1.5 rounded-lg gold-border font-mono font-bold text-amber-900 text-xs sm:text-sm whitespace-nowrap min-w-[85px] text-center">' +
+                                evt.time +
+                            '</div>' +
+                            '<div>' +
+                                '<div class="font-cinzel font-bold text-slate-900 text-base sm:text-lg">' + 
+                                    (evt.isTalli ? '💍 ' : '') + evt.title + 
+                                '</div>' +
+                                '<div class="text-xs text-slate-500 mt-0.5">' +
+                                    'Tasks: <span class="font-bold text-slate-700">' + prog.done + ' / ' + prog.total + ' Completed</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">' +
+                            statusBadge +
+                        '</div>' +
+                    '</div>';
+            });
+
+            html += '</div>';
+            document.getElementById('tab-view-agenda').innerHTML = html;
+        }
+
+        function renderDetailsView() {
+            var html = '<div class="space-y-6">';
+
+            WEDDING_EVENTS.forEach(function(evt) {
+                var todoItemsHtml = evt.todo.map(function(item) {
+                    return '<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700"><span class="text-amber-500">▪</span><span>' + item + '</span></li>';
+                }).join('');
+
+                var responsibleHtml = evt.responsible.map(function(role) {
+                    return '<span class="px-2.5 py-1 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold rounded-md">👤 ' + role + '</span>';
+                }).join('');
+
+                var peopleHtml = evt.people.map(function(person) {
+                    return '<span class="px-2.5 py-1 bg-slate-100 text-slate-800 text-xs font-medium rounded-md">👥 ' + person + '</span>';
+                }).join('');
+
+                var walkingHtml = evt.walkingList ? evt.walkingList.map(function(step) {
+                    return '<li class="text-xs text-slate-700 font-medium">' + step + '</li>';
+                }).join('') : '';
+
+                var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
+
+                html += 
+                    '<div class="p-5 rounded-2xl space-y-4 ' + cardBg + '">' +
+                        '<div class="flex items-center justify-between border-b border-amber-200 pb-3">' +
+                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-lg sm:text-xl flex-1 ml-3">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                        '</div>' +
+
+                        '<!-- TO DO LIST -->' +
+                        '<div class="space-y-1.5">' +
+                            '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">📋 TO DO</div>' +
+                            '<ul class="space-y-1 pl-1">' + todoItemsHtml + '</ul>' +
+                        '</div>' +
+
+                        '<!-- RESPONSIBLE LEADERS -->' +
+                        '<div class="space-y-1.5 pt-2 border-t border-slate-100">' +
+                            '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">👑 RESPONSIBLE LEADERS (PIC)</div>' +
+                            '<div class="flex flex-wrap gap-1.5">' + responsibleHtml + '</div>' +
+                        '</div>' +
+
+                        '<!-- PEOPLE INVOLVED -->' +
+                        '<div class="space-y-1.5">' +
+                            '<div class="text-xs font-bold text-slate-500 uppercase tracking-wider">👥 PEOPLE INVOLVED</div>' +
+                            '<div class="flex flex-wrap gap-1.5">' + peopleHtml + '</div>' +
+                        '</div>' +
+
+                        '<!-- WALKING LIST / PROCESSION -->' +
+                        (walkingHtml ? 
+                            '<div class="space-y-1.5 bg-amber-50/50 p-3 rounded-xl border border-amber-200/60">' +
+                                '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">🚶 WALKING LIST / PROCESSION ORDER</div>' +
+                                '<ul class="space-y-1 pl-1 list-none">' + walkingHtml + '</ul>' +
+                            '</div>' : '') +
+
+                        '<!-- SONG / LED / IMPORTANT INSTRUCTIONS -->' +
+                        (evt.song ? '<div class="text-xs text-slate-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200 font-medium">🎵 <b>SONG:</b> ' + evt.song + '</div>' : '') +
+                        (evt.led ? '<div class="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 font-medium">📺 <b>LED:</b> ' + evt.led + '</div>' : '') +
+                        (evt.important ? '<div class="text-xs text-amber-950 bg-amber-100/80 p-2.5 rounded-lg border border-amber-300 font-semibold">⚠️ <b>IMPORTANT:</b> ' + evt.important + '</div>' : '') +
+                    '</div>';
+            });
+
+            html += '</div>';
+            document.getElementById('tab-view-details').innerHTML = html;
+        }
+
+        function renderTransportView() {
+            var html = 
+                '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-2 text-center">' +
+                    '<h2 class="font-cinzel font-black text-slate-900 text-lg sm:text-xl">🚗 WEDDING CAR CONVOY & DRIVER DASHBOARD</h2>' +
+                    '<p class="text-xs text-slate-500">Real-time tracking of assigned drivers (Saccin, Victor, Shankar, Michael, Senthil, Mano Uncle Team), license plates, and exact passenger allocations.</p>' +
+                '</div>' +
+
+                '<!-- CONVOY POSITIONING SUMMARY CARD -->' +
+                '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">' +
+                    '<div class="bg-amber-50/70 p-4 rounded-2xl gold-border space-y-2">' +
+                        '<div class="font-cinzel font-bold text-amber-900 text-sm border-b border-amber-200 pb-1">🚘 GROOM CONVOY ORDER (HOUSE ➔ HALL)</div>' +
+                        '<ol class="text-xs space-y-1 font-semibold text-slate-800">' +
+                            '<li>1. <b>Porsche (SAB 1111 V)</b> — Driver: Saccin</li>' +
+                            '<li>2. <b>Denza (VMP 1111)</b> — Driver: Victor</li>' +
+                            '<li>3. <b>Toyota Alphard (VHR 1111)</b> — Driver: Mano Uncle Team</li>' +
+                            '<li>4. <b>Mercedes S-Class (CEH 1111)</b> — Driver: Senthil</li>' +
+                        '</ol>' +
+                    '</div>' +
+
+                    '<div class="bg-amber-50/70 p-4 rounded-2xl gold-border space-y-2">' +
+                        '<div class="font-cinzel font-bold text-amber-900 text-sm border-b border-amber-200 pb-1">🚘 BRIDE CONVOY ORDER (HOTEL ➔ HALL)</div>' +
+                        '<ol class="text-xs space-y-1 font-semibold text-slate-800">' +
+                            '<li>1. <b>BMW i7 (SAB 1111 H)</b> — Driver: Shankar</li>' +
+                            '<li>2. <b>Toyota Vellfire (PLR 1111)</b> — Driver: Michael</li>' +
+                            '<li>3. <b>Mano Uncle Van 9-Seater (VLV 3181)</b> — Departs Early</li>' +
+                        '</ol>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="space-y-4 pt-2">';
+
+            CAR_CONVOY_LIST.forEach(function(car) {
+                var status = getCarStatus(car.id);
+
+                var statusClasses = {
+                    'READY': 'bg-blue-100 text-blue-900 border-blue-300',
+                    'DEPARTED': 'bg-amber-100 text-amber-900 border-amber-300 animate-pulse',
+                    'ARRIVED': 'bg-emerald-100 text-emerald-900 border-emerald-300',
+                    'STANDBY': 'bg-slate-100 text-slate-700 border-slate-300'
+                };
+
+                var passengersHtml = car.passengers.map(function(p) {
+                    return '<span class="px-2 py-0.5 bg-slate-100 text-slate-800 text-xs font-medium rounded border border-slate-200">' + p + '</span>';
+                }).join(' ');
+
+                html += 
+                    '<div class="p-5 bg-white rounded-2xl gold-border shadow-xs space-y-3">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-3 gap-2">' +
+                            '<div>' +
+                                '<span class="px-2.5 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md">' + car.plate + '</span>' +
+                                '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg inline-block ml-2">' + car.role + '</h3>' +
+                            '</div>' +
+                            '<span class="px-3 py-1 rounded-full text-xs font-bold border self-start sm:self-auto ' + statusClasses[status] + '">' +
+                                'STATUS: ' + status +
+                            '</span>' +
+                        '</div>' +
+
+                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">' +
+                            '<div><b>🚘 Vehicle Model:</b> <span class="text-slate-700 font-medium">' + car.model + '</span></div>' +
+                            '<div><b>👨‍✈️ Driver:</b> <span class="text-amber-900 font-bold">' + car.driver + '</span></div>' +
+                            '<div><b>📍 Route & Type:</b> <span class="text-slate-700 font-medium">' + car.route + '</span></div>' +
+                            '<div><b>⏰ Convoy Position:</b> <span class="text-slate-900 font-bold">' + car.position + '</span></div>' +
+                        '</div>' +
+
+                        '<div class="space-y-1 pt-1 border-t border-slate-100 text-xs">' +
+                            '<div class="font-bold text-slate-500 uppercase tracking-wider">👥 PASSENGER ALLOCATION</div>' +
+                            '<div class="flex flex-wrap gap-1.5">' + passengersHtml + '</div>' +
+                        '</div>' +
+
+                        '<div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">' +
+                            '<span class="text-xs font-bold text-slate-500 mr-1">CHANGE STATUS:</span>' +
+                            '<button onclick="setCarStatus(\'' + car.id + '\', \'READY\')" class="px-3 py-1 bg-blue-50 text-blue-700 hover:bg-blue-100 font-bold rounded-lg text-xs border border-blue-200 transition">READY</button>' +
+                            '<button onclick="setCarStatus(\'' + car.id + '\', \'DEPARTED\')" class="px-3 py-1 bg-amber-50 text-amber-700 hover:bg-amber-100 font-bold rounded-lg text-xs border border-amber-200 transition">DEPARTED</button>' +
+                            '<button onclick="setCarStatus(\'' + car.id + '\', \'ARRIVED\')" class="px-3 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg text-xs border border-emerald-200 transition">ARRIVED</button>' +
+                            '<button onclick="setCarStatus(\'' + car.id + '\', \'STANDBY\')" class="px-3 py-1 bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold rounded-lg text-xs border border-slate-200 transition">STANDBY</button>' +
+                        '</div>' +
+                    '</div>';
+            });
+
+            html += '</div>';
+
+            // SPARE CARS SECTION
+            html += 
+                '<div class="mt-6 p-5 bg-white rounded-2xl gold-border space-y-3 shadow-xs">' +
+                    '<div class="font-cinzel font-bold text-slate-900 text-base border-b border-amber-200 pb-2">🚗 SPARE VEHICLES</div>' +
+                    '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">' +
+                        SPARE_CARS.map(function(sc) {
+                            return '<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">' +
+                                '<div><b>' + sc.model + '</b></div>' +
+                                '<span class="px-2 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold rounded text-xs">' + sc.plate + '</span>' +
+                            '</div>';
+                        }).join('') +
+                    '</div>' +
+                '</div>';
+
+            // TEMPLE PARKING ALLOCATION SECTION
+            html += 
+                '<div class="mt-4 p-5 bg-white rounded-2xl gold-border space-y-3 shadow-xs">' +
+                    '<div class="font-cinzel font-bold text-slate-900 text-base border-b border-amber-200 pb-2 flex items-center justify-between">' +
+                        '<span>🅿️ TEMPLE INSIDE PARKING (8 RESERVED SPOTS)</span>' +
+                        '<span class="text-xs font-sans text-amber-800 bg-amber-100 px-2 py-0.5 rounded">REVERSE PARK REQUIRED</span>' +
+                    '</div>' +
+                    '<p class="text-xs text-slate-600">⚠️ <b>IMPORTANT INSTRUCTION:</b> All 6 convoy cars MUST be reverse parked according to convoy order once reached at the temple. The van will be parked elsewhere after drop off.</p>' +
+                    '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 pt-1 text-xs">' +
+                        TEMPLE_PARKING_LIST.map(function(tp) {
+                            return '<div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-200 space-y-1">' +
+                                '<div class="font-bold text-amber-900">Spot #' + tp.spot + ' — ' + tp.model + '</div>' +
+                                '<div class="font-mono text-slate-700 text-[11px] font-bold">' + tp.plate + '</div>' +
+                            '</div>';
+                        }).join('') +
+                    '</div>' +
+                '</div>';
+
+            document.getElementById('tab-view-transport').innerHTML = html;
+        }
+
+        function renderChecklistView() {
+            var metrics = getOverallMetrics();
+
+            var html = 
+                '<!-- SIMPLE TOP PROGRESS SUMMARY -->' +
+                '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-3 text-center">' +
+                    '<div class="text-xs font-bold text-amber-800 uppercase tracking-widest">WEDDING PROGRESS</div>' +
+                    '<div class="text-2xl sm:text-3xl font-black font-mono text-slate-900">' + 
+                        metrics.completed + ' / ' + metrics.total + ' TASKS COMPLETED (' + metrics.percent + '%)' + 
+                    '</div>' +
+                    '<div class="w-full bg-slate-100 rounded-full h-3.5 overflow-hidden gold-border p-0.5">' +
+                        '<div class="bg-amber-400 h-2.5 rounded-full transition-all duration-500" style="width: ' + metrics.percent + '%"></div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="space-y-6">';
+
+            WEDDING_EVENTS.forEach(function(evt) {
+                var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
+
+                var tasksHtml = evt.todo.map(function(taskText, idx) {
+                    var done = isTaskDone(evt.id, idx);
+                    var itemBg = done ? 'bg-emerald-50 border-emerald-200 text-emerald-900 line-through font-medium' : 'bg-slate-50 border-slate-200 text-slate-800 font-semibold';
+                    var checkedAttr = done ? 'checked' : '';
+
+                    return '<label class="flex items-center gap-3.5 p-3 sm:p-4 rounded-xl transition cursor-pointer border ' + itemBg + '">' +
+                        '<input type="checkbox" ' + checkedAttr + ' onchange="toggleTask(\'' + evt.id + '\', ' + idx + ')" class="large-checkbox">' +
+                        '<span class="text-sm sm:text-base flex-1">' + taskText + '</span>' +
+                        (done ? '<span class="text-xs font-bold text-emerald-600 no-underline whitespace-nowrap">✅ DONE</span>' : '') +
+                    '</label>';
+                }).join('');
+
+                html += 
+                    '<div class="p-5 rounded-2xl space-y-3 ' + cardBg + '">' +
+                        '<div class="flex items-center justify-between border-b border-amber-200 pb-2.5">' +
+                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg flex-1 ml-3">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                        '</div>' +
+                        '<div class="space-y-2.5 pt-1">' + tasksHtml + '</div>' +
+                    '</div>';
+            });
+
+            html += 
+                '</div>' +
+                '<div class="pt-4 flex justify-center">' +
+                    '<button onclick="openResetModal()" class="px-4 py-2 text-slate-400 hover:text-slate-600 font-cinzel font-bold text-xs rounded-xl transition underline">' +
+                        'RESET ALL CHECKLIST' +
+                    '</button>' +
+                '</div>';
+
+            document.getElementById('tab-view-checklist').innerHTML = html;
+        }
+
+        function toggleTask(evtId, taskIdx) {
+            var key = evtId + '_' + taskIdx;
+            savedTasks[key] = !savedTasks[key];
+            saveTaskState();
+
+            var metrics = getOverallMetrics();
+            if (metrics.percent === 100 && typeof confetti === 'function') {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            }
+
+            renderAllViews();
+        }
+
+        function openResetModal() {
+            document.getElementById('reset-modal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            document.getElementById('reset-modal').classList.add('hidden');
+        }
+
+        function executeResetAll() {
+            savedTasks = {};
+            savedCarStatus = {};
+            localStorage.removeItem(STORAGE_KEY_TASKS);
+            localStorage.removeItem(STORAGE_KEY_CAR_STATUS);
+            closeResetModal();
+            renderAllViews();
+        }
+
+        function renderAllViews() {
+            if (currentTab === 'AGENDA') renderAgendaView();
+            else if (currentTab === 'DETAILS') renderDetailsView();
+            else if (currentTab === 'TRANSPORT') renderTransportView();
+            else if (currentTab === 'CHECKLIST') renderChecklistView();
+        }
+
+        // Boot initial render
+        window.onload = function() {
+            renderAllViews();
+        };
+    </script>
+</body>
+</html>

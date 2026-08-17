@@ -689,10 +689,57 @@
 
                 html += 
                     '<div class="p-4 rounded-2xl transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs ' + cardBg + '">' +
-                        '<div class="flex items-start gap-3.5">' +
-                            '<div class="bg-white px-3 py-1.5 rounded-lg gold-border font-mono font-bold text-amber-900 text-xs sm:text-sm whitespace-nowrap min-w-[85px] text-center">' +
-                                evt.time +
+                        '<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 flex-1 min-w-0">' +
+                            '<div class="inline-flex items-center justify-center bg-white px-3 py-1 rounded-lg gold-border font-mono font-bold text-amber-900 text-xs sm:text-sm shrink-0 w-fit whitespace-nowrap shadow-2xs">' +
+                                '⏰ ' + evt.time +
                             '</div>' +
+                            '<div class="flex-1 min-w-0">' +
+                                '<div class="font-cinzel font-bold text-slate-900 text-base sm:text-lg break-words">' + 
+                                    (evt.isTalli ? '💍 ' : '') + evt.title + 
+                                '</div>' +
+                                '<div class="text-xs text-slate-500 mt-0.5">' +
+                                    'Tasks: <span class="font-bold text-slate-700">' + prog.done + ' / ' + prog.total + ' Completed</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">' +
+                            statusBadge +
+                        '</div>' +
+                    '</div>';
+            });
+
+            html += '</div>';
+            document.getElementById('tab-view-agenda').innerHTML = html;
+        }
+
+        function renderDetailsView() {
+            var html = '<div class="space-y-6">';
+
+            WEDDING_EVENTS.forEach(function(evt) {
+                var todoItemsHtml = evt.todo.map(function(item) {
+                    return '<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700"><span class="text-amber-500">▪</span><span>' + item + '</span></li>';
+                }).join('');
+
+                var responsibleHtml = evt.responsible.map(function(role) {
+                    return '<span class="px-2.5 py-1 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold rounded-md">👤 ' + role + '</span>';
+                }).join('');
+
+                var peopleHtml = evt.people.map(function(person) {
+                    return '<span class="px-2.5 py-1 bg-slate-100 text-slate-800 text-xs font-medium rounded-md">👥 ' + person + '</span>';
+                }).join('');
+
+                var walkingHtml = evt.walkingList ? evt.walkingList.map(function(step) {
+                    return '<li class="text-xs text-slate-700 font-medium">' + step + '</li>';
+                }).join('') : '';
+
+                var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
+
+                html += 
+                    '<div class="p-5 rounded-2xl space-y-4 ' + cardBg + '">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-3 gap-2">' +
+                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-lg sm:text-xl flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                        '</div>' +
                             '<div>' +
                                 '<div class="font-cinzel font-bold text-slate-900 text-base sm:text-lg">' + 
                                     (evt.isTalli ? '💍 ' : '') + evt.title + 
@@ -926,9 +973,9 @@
 
                 html += 
                     '<div class="p-5 rounded-2xl space-y-3 ' + cardBg + '">' +
-                        '<div class="flex items-center justify-between border-b border-amber-200 pb-2.5">' +
-                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md">⏰ ' + evt.time + '</span>' +
-                            '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg flex-1 ml-3">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-2.5 gap-2">' +
+                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
                         '</div>' +
                         '<div class="space-y-2.5 pt-1">' + tasksHtml + '</div>' +
                     '</div>';

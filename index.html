@@ -421,10 +421,15 @@
 
     <style>
         body {
-            background-color: #FFFFFF;
+            background: linear-gradient(180deg, #FAF4E5 0%, #F3E6C8 50%, #E8D5A3 100%);
+            background-attachment: fixed;
             color: #1F2937;
             font-family: 'Inter', sans-serif;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .gold-bg-card {
+            background: linear-gradient(135deg, #FFFDF5 0%, #FDF8EA 100%);
         }
 
         .gold-border {
@@ -436,9 +441,9 @@
         }
 
         .gold-glow-card {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
-            border: 2px solid #D4AF37;
-            background: #FFFDF5;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            border: 2.5px solid #D4AF37;
+            background: linear-gradient(135deg, #FFFDF7 0%, #FFF5DA 100%);
         }
 
         /* Touch-friendly Large Checkbox for Mobile & iPad */
@@ -452,36 +457,36 @@
 
         /* Smooth tab styling */
         .active-tab {
-            background-color: #D4AF37 !important;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%) !important;
             color: #FFFFFF !important;
-            border-color: #B89220 !important;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+            border-color: #8B6508 !important;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.45);
         }
         .inactive-tab {
-            background-color: #FFFFFF !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
             color: #374151 !important;
-            border: 1.5px solid #E5E7EB !important;
+            border: 1.5px solid #D4AF37 !important;
         }
         .inactive-tab:hover {
             background-color: #FFFDF5 !important;
-            border-color: #D4AF37 !important;
+            border-color: #B8860B !important;
         }
     </style>
 </head>
-<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col antialiased">
 
-    <!-- CLEAN LUXURY HEADER -->
-    <header class="bg-white border-b border-amber-200 px-4 py-5 sm:px-8 text-center relative shadow-xs">
+    <!-- CLEAN LUXURY GOLD HEADER -->
+    <header class="bg-gradient-to-r from-amber-100/90 via-amber-50/95 to-amber-100/90 backdrop-blur border-b-2 border-amber-400 px-4 py-6 sm:px-8 text-center relative shadow-md">
         <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-1.5">
             <!-- Couple Names & Interlocking Rings -->
             <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-slate-900 tracking-wider">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
                     NAVINSAMY
                 </h1>
 
                 <!-- Interlocking Gold Rings Graphic -->
                 <div class="w-10 h-7 flex items-center justify-center" title="Interlocking Wedding Rings">
-                    <svg class="w-10 h-7 drop-shadow-sm" viewBox="0 0 100 60" fill="none">
+                    <svg class="w-10 h-7 drop-shadow-md" viewBox="0 0 100 60" fill="none">
                         <circle cx="36" cy="30" r="22" stroke="url(#goldRing1)" stroke-width="6" />
                         <circle cx="64" cy="30" r="22" stroke="url(#goldRing2)" stroke-width="6" />
                         <defs>
@@ -499,23 +504,23 @@
                     </svg>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-slate-900 tracking-wider">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
                     KAVYA
                 </h1>
             </div>
 
             <!-- Date & Location -->
-            <div class="text-xs sm:text-sm font-bold text-amber-800 uppercase tracking-widest mt-1">
+            <div class="text-xs sm:text-sm font-bold text-amber-900 uppercase tracking-widest mt-1">
                 📅 23 AUGUST 2026
             </div>
-            <div class="text-xs text-slate-500 font-medium max-w-md">
+            <div class="text-xs text-amber-900 font-medium max-w-md">
                 📍 Jalan Baru Muniswarar Temple, Perai, Pulau Pinang
             </div>
         </div>
     </header>
 
-    <!-- 4 NAVIGATION TABS (Includes Dedicated CAR CONVOY TAB) -->
-    <div class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 py-3 px-4">
+    <!-- 4 NAVIGATION TABS -->
+    <div class="sticky top-0 z-40 bg-amber-100/95 backdrop-blur border-b border-amber-300 py-3 px-4 shadow-xs">
         <div class="max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-3">
             <button id="tab-btn-agenda" onclick="switchTab('AGENDA')" class="active-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
                 <span>📅</span>
@@ -572,13 +577,13 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="mt-auto bg-white border-t border-slate-200 py-6 px-4 text-center text-xs text-slate-500 space-y-1">
-        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-900 tracking-widest text-sm">
+    <footer class="mt-auto bg-amber-100/90 border-t-2 border-amber-300 py-6 px-4 text-center text-xs text-amber-900 space-y-1">
+        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-950 tracking-widest text-sm">
             <span>NAVINSAMY</span>
-            <span class="text-red-500">♥</span>
+            <span class="text-red-600">♥</span>
             <span>KAVYA</span>
         </div>
-        <div class="text-[11px] text-amber-800 font-semibold">
+        <div class="text-[11px] text-amber-900 font-bold">
             23 • 08 • 2026 💍
         </div>
     </footer>

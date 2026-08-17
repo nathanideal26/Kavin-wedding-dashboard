@@ -29,6 +29,208 @@
         };
     </script>
 
+    <style>
+        body {
+            background: linear-gradient(180deg, #FAF4E5 0%, #F3E6C8 50%, #E8D5A3 100%);
+            background-attachment: fixed;
+            color: #1F2937;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* HEADER FESTIVE BACKGROUND & OVERLAY */
+        .festive-header-bg {
+            background-image: linear-gradient(180deg, rgba(255, 253, 245, 0.82) 0%, rgba(254, 243, 199, 0.92) 100%), 
+                              url('https://i.ibb.co/mVZy9bM8/vibrant-indian-festive-background-with-intricate-decorations-1220676-34587.avif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gold-bg-card {
+            background: linear-gradient(135deg, #FFFDF5 0%, #FDF8EA 100%);
+        }
+
+        .gold-border {
+            border: 1.5px solid #D4AF37;
+        }
+
+        .gold-border-thick {
+            border: 2px solid #D4AF37;
+        }
+
+        .gold-glow-card {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            border: 2.5px solid #D4AF37;
+            background: linear-gradient(135deg, #FFFDF7 0%, #FFF5DA 100%);
+        }
+
+        /* Touch-friendly Large Checkbox for Mobile & iPad */
+        .large-checkbox {
+            width: 28px;
+            height: 28px;
+            accent-color: #10B981;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        /* Smooth tab styling */
+        .active-tab {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%) !important;
+            color: #FFFFFF !important;
+            border-color: #8B6508 !important;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.45);
+        }
+        .inactive-tab {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            color: #374151 !important;
+            border: 1.5px solid #D4AF37 !important;
+        }
+        .inactive-tab:hover {
+            background-color: #FFFDF5 !important;
+            border-color: #B8860B !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- FESTIVE LUXURY GOLD HEADER WITH CIRCLE GANESHA LOGO -->
+    <header class="festive-header-bg border-b-2 border-amber-400 px-4 py-5 sm:px-8 text-center relative shadow-md">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+            
+            <!-- GANESHA CIRCLE LOGO -->
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-amber-500 shadow-md p-1 bg-white/90 overflow-hidden flex items-center justify-center">
+                <img src="https://i.ibb.co/JFdWJxCX/images-3.jpg" alt="Lord Ganesha Logo" class="w-full h-full object-cover rounded-full">
+            </div>
+
+            <!-- Couple Names & Interlocking Rings -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
+                    NAVINSAMY
+                </h1>
+
+                <!-- Interlocking Gold Rings Graphic -->
+                <div class="w-10 h-7 flex items-center justify-center" title="Interlocking Wedding Rings">
+                    <svg class="w-10 h-7 drop-shadow-md" viewBox="0 0 100 60" fill="none">
+                        <circle cx="36" cy="30" r="22" stroke="url(#goldRing1)" stroke-width="6" />
+                        <circle cx="64" cy="30" r="22" stroke="url(#goldRing2)" stroke-width="6" />
+                        <defs>
+                            <linearGradient id="goldRing1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFF5D6" />
+                                <stop offset="50%" stop-color="#D4AF37" />
+                                <stop offset="100%" stop-color="#8A6511" />
+                            </linearGradient>
+                            <linearGradient id="goldRing2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FFEAA7" />
+                                <stop offset="50%" stop-color="#F5D061" />
+                                <stop offset="100%" stop-color="#996515" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
+                    KAVYA
+                </h1>
+            </div>
+
+            <!-- EVENT BRANCH SWITCHER (TEMPLE VS RECEPTION) -->
+            <div class="flex items-center justify-center gap-2 mt-1">
+                <button id="branch-btn-temple" onclick="switchBranch('TEMPLE')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700">
+                    🛕 TEMPLE WEDDING (23 AUG)
+                </button>
+                <button id="branch-btn-reception" onclick="switchBranch('RECEPTION')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50">
+                    🍸 RECEPTION (24 AUG - PICCA)
+                </button>
+            </div>
+
+            <!-- Date & Location Banner (Dynamic based on Branch) -->
+            <div id="branch-info-banner" class="text-xs sm:text-sm font-bold text-amber-900 uppercase tracking-widest bg-white/70 px-4 py-1 rounded-full border border-amber-300">
+                📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang
+            </div>
+
+            <!-- DUAL COUNTDOWN TIMERS -->
+            <div class="flex items-center justify-center gap-2 sm:gap-4 mt-2 flex-wrap w-full max-w-lg">
+                <div class="bg-amber-950/85 text-amber-100 border border-amber-400/60 px-3 py-1.5 rounded-xl text-center shadow-xs flex-1 min-w-[140px]">
+                    <div class="text-[10px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🛕 TEMPLE (23 AUG)</div>
+                    <div id="countdown-temple" class="font-mono text-xs sm:text-sm font-bold text-white tracking-wide">00d 00h 00m 00s</div>
+                </div>
+                <div class="bg-amber-950/85 text-amber-100 border border-amber-400/60 px-3 py-1.5 rounded-xl text-center shadow-xs flex-1 min-w-[140px]">
+                    <div class="text-[10px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🍸 RECEPTION (24 AUG)</div>
+                    <div id="countdown-reception" class="font-mono text-xs sm:text-sm font-bold text-white tracking-wide">00d 00h 00m 00s</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4 NAVIGATION TABS (STICKY ON SCROLL) -->
+    <div class="sticky top-0 z-40 bg-amber-100/95 backdrop-blur border-b border-amber-300 py-2.5 px-4 shadow-xs">
+        <div class="max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-3">
+            <button id="tab-btn-agenda" onclick="switchTab('AGENDA')" class="active-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>📅</span>
+                <span>AGENDA</span>
+            </button>
+            <button id="tab-btn-details" onclick="switchTab('DETAILS')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>👥</span>
+                <span>JOB DETAILS</span>
+            </button>
+            <button id="tab-btn-transport" onclick="switchTab('TRANSPORT')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>🚗</span>
+                <span>CAR CONVOY</span>
+            </button>
+            <button id="tab-btn-checklist" onclick="switchTab('CHECKLIST')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+                <span>✅</span>
+                <span>CHECKLIST</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        <!-- TAB 1 — AGENDA VIEW -->
+        <div id="tab-view-agenda" class="space-y-4"></div>
+
+        <!-- TAB 2 — JOB DETAILS VIEW -->
+        <div id="tab-view-details" class="space-y-6 hidden"></div>
+
+        <!-- TAB 3 — CAR CONVOY LIST VIEW -->
+        <div id="tab-view-transport" class="space-y-6 hidden"></div>
+
+        <!-- TAB 4 — PROGRESS CHECKLIST VIEW -->
+        <div id="tab-view-checklist" class="space-y-6 hidden"></div>
+    </main>
+
+    <!-- CONFIRMATION RESET MODAL -->
+    <div id="reset-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 rounded-2xl gold-border max-w-sm w-full space-y-4 shadow-xl text-center">
+            <h3 class="font-cinzel font-bold text-lg text-slate-900">
+                RESET ALL CHECKLIST?
+            </h3>
+            <p class="text-xs text-slate-600">
+                Are you sure you want to uncheck all completed tasks and reset vehicle statuses?
+            </p>
+            <div class="flex items-center justify-center gap-3 pt-2">
+                <button onclick="closeResetModal()" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs">
+                    CANCEL
+                </button>
+                <button onclick="executeResetAll()" class="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl text-xs">
+                    YES, RESET
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-amber-100/90 border-t-2 border-amber-300 py-6 px-4 text-center text-xs text-amber-900 space-y-1">
+        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-950 tracking-widest text-sm">
+            <span>NAVINSAMY</span>
+            <span class="text-red-600">♥</span>
+            <span>KAVYA</span>
+        </div>
+        <div class="text-[11px] text-amber-900 font-bold">
+            23 • 08 • 2026 💍
+        </div>
+    </footer>
+
     <script>
         // MASTER CAR CONVOY LIST DATA (OFFICIAL LIST)
         var CAR_CONVOY_LIST = [
@@ -771,185 +973,8 @@
                 important: 'Ensure smooth photo queue outside ballroom.'
             }
         ];
-    </script>
 
-    <style>
-        body {
-            background: linear-gradient(180deg, #FAF4E5 0%, #F3E6C8 50%, #E8D5A3 100%);
-            background-attachment: fixed;
-            color: #1F2937;
-            font-family: 'Inter', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .gold-bg-card {
-            background: linear-gradient(135deg, #FFFDF5 0%, #FDF8EA 100%);
-        }
-
-        .gold-border {
-            border: 1.5px solid #D4AF37;
-        }
-
-        .gold-border-thick {
-            border: 2px solid #D4AF37;
-        }
-
-        .gold-glow-card {
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
-            border: 2.5px solid #D4AF37;
-            background: linear-gradient(135deg, #FFFDF7 0%, #FFF5DA 100%);
-        }
-
-        /* Touch-friendly Large Checkbox for Mobile & iPad */
-        .large-checkbox {
-            width: 28px;
-            height: 28px;
-            accent-color: #10B981;
-            cursor: pointer;
-            border-radius: 6px;
-        }
-
-        /* Smooth tab styling */
-        .active-tab {
-            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%) !important;
-            color: #FFFFFF !important;
-            border-color: #8B6508 !important;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.45);
-        }
-        .inactive-tab {
-            background-color: rgba(255, 255, 255, 0.9) !important;
-            color: #374151 !important;
-            border: 1.5px solid #D4AF37 !important;
-        }
-        .inactive-tab:hover {
-            background-color: #FFFDF5 !important;
-            border-color: #B8860B !important;
-        }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col antialiased">
-
-    <!-- CLEAN LUXURY GOLD HEADER -->
-    <header class="bg-gradient-to-r from-amber-100/90 via-amber-50/95 to-amber-100/90 backdrop-blur border-b-2 border-amber-400 px-4 py-6 sm:px-8 text-center relative shadow-md">
-        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-1.5">
-            <!-- Couple Names & Interlocking Rings -->
-            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
-                    NAVINSAMY
-                </h1>
-
-                <!-- Interlocking Gold Rings Graphic -->
-                <div class="w-10 h-7 flex items-center justify-center" title="Interlocking Wedding Rings">
-                    <svg class="w-10 h-7 drop-shadow-md" viewBox="0 0 100 60" fill="none">
-                        <circle cx="36" cy="30" r="22" stroke="url(#goldRing1)" stroke-width="6" />
-                        <circle cx="64" cy="30" r="22" stroke="url(#goldRing2)" stroke-width="6" />
-                        <defs>
-                            <linearGradient id="goldRing1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFF5D6" />
-                                <stop offset="50%" stop-color="#D4AF37" />
-                                <stop offset="100%" stop-color="#8A6511" />
-                            </linearGradient>
-                            <linearGradient id="goldRing2" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#FFEAA7" />
-                                <stop offset="50%" stop-color="#F5D061" />
-                                <stop offset="100%" stop-color="#996515" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
-                    KAVYA
-                </h1>
-            </div>
-
-            <!-- EVENT BRANCH SWITCHER (TEMPLE VS RECEPTION) -->
-            <div class="flex items-center justify-center gap-2 mt-2">
-                <button id="branch-btn-temple" onclick="switchBranch('TEMPLE')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700">
-                    🛕 TEMPLE WEDDING (23 AUG)
-                </button>
-                <button id="branch-btn-reception" onclick="switchBranch('RECEPTION')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50">
-                    🍸 RECEPTION (24 AUG - PICCA)
-                </button>
-            </div>
-
-            <!-- Date & Location Banner (Dynamic based on Branch) -->
-            <div id="branch-info-banner" class="text-xs sm:text-sm font-bold text-amber-900 uppercase tracking-widest mt-1">
-                📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang
-            </div>
-        </div>
-    </header>
-
-    <!-- 4 NAVIGATION TABS -->
-    <div class="sticky top-0 z-40 bg-amber-100/95 backdrop-blur border-b border-amber-300 py-3 px-4 shadow-xs">
-        <div class="max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-3">
-            <button id="tab-btn-agenda" onclick="switchTab('AGENDA')" class="active-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
-                <span>📅</span>
-                <span>AGENDA</span>
-            </button>
-            <button id="tab-btn-details" onclick="switchTab('DETAILS')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
-                <span>👥</span>
-                <span>JOB DETAILS</span>
-            </button>
-            <button id="tab-btn-transport" onclick="switchTab('TRANSPORT')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
-                <span>🚗</span>
-                <span>CAR CONVOY</span>
-            </button>
-            <button id="tab-btn-checklist" onclick="switchTab('CHECKLIST')" class="inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
-                <span>✅</span>
-                <span>CHECKLIST</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
-        <!-- TAB 1 — AGENDA VIEW -->
-        <div id="tab-view-agenda" class="space-y-4"></div>
-
-        <!-- TAB 2 — JOB DETAILS VIEW -->
-        <div id="tab-view-details" class="space-y-6 hidden"></div>
-
-        <!-- TAB 3 — CAR CONVOY LIST VIEW -->
-        <div id="tab-view-transport" class="space-y-6 hidden"></div>
-
-        <!-- TAB 4 — PROGRESS CHECKLIST VIEW -->
-        <div id="tab-view-checklist" class="space-y-6 hidden"></div>
-    </main>
-
-    <!-- CONFIRMATION RESET MODAL -->
-    <div id="reset-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-        <div class="bg-white p-6 rounded-2xl gold-border max-w-sm w-full space-y-4 shadow-xl text-center">
-            <h3 class="font-cinzel font-bold text-lg text-slate-900">
-                RESET ALL CHECKLIST?
-            </h3>
-            <p class="text-xs text-slate-600">
-                Are you sure you want to uncheck all completed tasks and reset vehicle statuses?
-            </p>
-            <div class="flex items-center justify-center gap-3 pt-2">
-                <button onclick="closeResetModal()" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs">
-                    CANCEL
-                </button>
-                <button onclick="executeResetAll()" class="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl text-xs">
-                    YES, RESET
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="mt-auto bg-amber-100/90 border-t-2 border-amber-300 py-6 px-4 text-center text-xs text-amber-900 space-y-1">
-        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-950 tracking-widest text-sm">
-            <span>NAVINSAMY</span>
-            <span class="text-red-600">♥</span>
-            <span>KAVYA</span>
-        </div>
-        <div class="text-[11px] text-amber-900 font-bold">
-            23 • 08 • 2026 💍
-        </div>
-    </footer>
-
-    <script>
+        // LOCAL STORAGE STATE KEYS
         var STORAGE_KEY_TASKS = 'nk_wedding_tasks_v2';
         var STORAGE_KEY_CAR_STATUS = 'nk_wedding_car_status_v2';
         var STORAGE_KEY_BRANCH = 'nk_wedding_branch_v2';
@@ -1008,13 +1033,13 @@
             var banner = document.getElementById('branch-info-banner');
 
             if (branch === 'TEMPLE') {
-                templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
-                receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
-                banner.innerHTML = "📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang";
+                if (templeBtn) templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
+                if (receptionBtn) receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
+                if (banner) banner.innerHTML = "📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang";
             } else {
-                receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
-                templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
-                banner.innerHTML = "📅 24 AUGUST 2026 | 📍 Ballroom 3, PICCA Convention Centre (#CynNavTiedInLove)";
+                if (receptionBtn) receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
+                if (templeBtn) templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
+                if (banner) banner.innerHTML = "📅 24 AUGUST 2026 | 📍 Ballroom 3, PICCA Convention Centre (#CynNavTiedInLove)";
             }
             renderAllViews();
         }
@@ -1025,12 +1050,14 @@
             tabs.forEach(function(t) {
                 var btn = document.getElementById('tab-btn-' + t.toLowerCase());
                 var view = document.getElementById('tab-view-' + t.toLowerCase());
-                if (t === tab) {
-                    btn.className = "active-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
-                    view.classList.remove('hidden');
-                } else {
-                    btn.className = "inactive-tab flex-1 py-3 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
-                    view.classList.add('hidden');
+                if (btn && view) {
+                    if (t === tab) {
+                        btn.className = "active-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                        view.classList.remove('hidden');
+                    } else {
+                        btn.className = "inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                        view.classList.add('hidden');
+                    }
                 }
             });
             renderAllViews();
@@ -1099,7 +1126,8 @@
             });
 
             html += '</div>';
-            document.getElementById('tab-view-agenda').innerHTML = html;
+            var elem = document.getElementById('tab-view-agenda');
+            if (elem) elem.innerHTML = html;
         }
 
         function renderDetailsView() {
@@ -1168,18 +1196,40 @@
             });
 
             html += '</div>';
-            document.getElementById('tab-view-details').innerHTML = html;
+            var elem = document.getElementById('tab-view-details');
+            if (elem) elem.innerHTML = html;
         }
 
         function renderTransportView() {
-            var html = 
+            var html = '';
+
+            if (currentBranch === 'RECEPTION') {
+                html = 
+                    '<div class="bg-white p-6 rounded-2xl gold-border shadow-xs space-y-3 text-center">' +
+                        '<div class="text-3xl">🍸</div>' +
+                        '<h2 class="font-cinzel font-bold text-slate-900 text-lg sm:text-xl">RECEPTION TRANSPORTATION PROTOCOL</h2>' +
+                        '<p class="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">' +
+                            'Car convoy sequence applies exclusively to the <b>Temple Wedding (23 Aug)</b>. For the Reception at PICCA Convention Centre (24 Aug), Bride & Groom and Royalties will arrive directly at designated entrance suites.' +
+                        '</p>' +
+                        '<div class="pt-2 flex justify-center">' +
+                            '<button onclick="switchBranch(\'TEMPLE\')" class="px-4 py-2 bg-amber-600 text-white font-bold rounded-xl text-xs font-cinzel shadow-xs hover:bg-amber-700 transition">' +
+                                '🛕 VIEW TEMPLE CAR CONVOY LIST' +
+                            '</button>' +
+                        '</div>' +
+                    '</div>';
+                var elem = document.getElementById('tab-view-transport');
+                if (elem) elem.innerHTML = html;
+                return;
+            }
+
+            html = 
                 '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-2 text-center">' +
                     '<h2 class="font-cinzel font-black text-slate-900 text-lg sm:text-xl">🚗 WEDDING CAR CONVOY & DRIVER DASHBOARD</h2>' +
                     '<p class="text-xs text-slate-500">Real-time tracking of assigned drivers (Saccin, Victor, Shankar, Michael, Senthil, Mano Uncle Team), license plates, and exact passenger allocations.</p>' +
                 '</div>' +
 
                 '<!-- CONVOY POSITIONING SUMMARY CARD -->' +
-                '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">' +
+                '<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">' +
                     '<div class="bg-amber-50/70 p-4 rounded-2xl gold-border space-y-2">' +
                         '<div class="font-cinzel font-bold text-amber-900 text-sm border-b border-amber-200 pb-1">🚘 GROOM CONVOY ORDER (HOUSE ➔ HALL)</div>' +
                         '<ol class="text-xs space-y-1 font-semibold text-slate-800">' +
@@ -1200,7 +1250,7 @@
                     '</div>' +
                 '</div>' +
 
-                '<div class="space-y-4 pt-2">';
+                '<div class="space-y-4 pt-4">';
 
             CAR_CONVOY_LIST.forEach(function(car) {
                 var status = getCarStatus(car.id);
@@ -1284,7 +1334,8 @@
                     '</div>' +
                 '</div>';
 
-            document.getElementById('tab-view-transport').innerHTML = html;
+            var elem = document.getElementById('tab-view-transport');
+            if (elem) elem.innerHTML = html;
         }
 
         function renderChecklistView() {
@@ -1302,7 +1353,7 @@
                         '<div class="bg-amber-400 h-2.5 rounded-full transition-all duration-500" style="width: ' + metrics.percent + '%"></div>' +
                     '</div>' +
                 '</div>' +
-                '<div class="space-y-6">';
+                '<div class="space-y-6 mt-4">';
 
             activeEvents.forEach(function(evt) {
                 var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
@@ -1337,7 +1388,8 @@
                     '</button>' +
                 '</div>';
 
-            document.getElementById('tab-view-checklist').innerHTML = html;
+            var elem = document.getElementById('tab-view-checklist');
+            if (elem) elem.innerHTML = html;
         }
 
         function toggleTask(evtId, taskIdx) {
@@ -1354,11 +1406,13 @@
         }
 
         function openResetModal() {
-            document.getElementById('reset-modal').classList.remove('hidden');
+            var modal = document.getElementById('reset-modal');
+            if (modal) modal.classList.remove('hidden');
         }
 
         function closeResetModal() {
-            document.getElementById('reset-modal').classList.add('hidden');
+            var modal = document.getElementById('reset-modal');
+            if (modal) modal.classList.add('hidden');
         }
 
         function executeResetAll() {
@@ -1377,9 +1431,64 @@
             else if (currentTab === 'CHECKLIST') renderChecklistView();
         }
 
-        // Boot initial render
+        function updateCountdowns() {
+            var now = new Date().getTime();
+            
+            // Temple Wedding: Aug 23, 2026 09:15:00
+            var templeTarget = new Date('2026-08-23T09:15:00').getTime();
+            var templeDiff = templeTarget - now;
+            var templeElem = document.getElementById('countdown-temple');
+            if (templeElem) {
+                if (templeDiff > 0) {
+                    var d = Math.floor(templeDiff / (1000 * 60 * 60 * 24));
+                    var h = Math.floor((templeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var m = Math.floor((templeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    var s = Math.floor((templeDiff % (1000 * 60)) / 1000);
+                    templeElem.innerHTML = d + 'd ' + String(h).padStart(2,'0') + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+                } else {
+                    templeElem.innerHTML = "🎉 EVENT LIVE!";
+                }
+            }
+
+            // Reception: Aug 24, 2026 18:00:00
+            var receptionTarget = new Date('2026-08-24T18:00:00').getTime();
+            var receptionDiff = receptionTarget - now;
+            var receptionElem = document.getElementById('countdown-reception');
+            if (receptionElem) {
+                if (receptionDiff > 0) {
+                    var rd = Math.floor(receptionDiff / (1000 * 60 * 60 * 24));
+                    var rh = Math.floor((receptionDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var rm = Math.floor((receptionDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    var rs = Math.floor((receptionDiff % (1000 * 60)) / 1000);
+                    receptionElem.innerHTML = rd + 'd ' + String(rh).padStart(2,'0') + 'h ' + String(rm).padStart(2,'0') + 'm ' + String(rs).padStart(2,'0') + 's';
+                } else {
+                    receptionElem.innerHTML = "🎉 EVENT LIVE!";
+                }
+            }
+        }
+
+        // BIND FUNCTIONS EXPLICITLY TO WINDOW FOR INLINE HTML ONCLICK ATTRIBUTES
+        window.switchBranch = switchBranch;
+        window.switchTab = switchTab;
+        window.setCarStatus = setCarStatus;
+        window.toggleTask = toggleTask;
+        window.openResetModal = openResetModal;
+        window.closeResetModal = closeResetModal;
+        window.executeResetAll = executeResetAll;
+        window.renderAllViews = renderAllViews;
+        window.renderAgendaView = renderAgendaView;
+        window.renderDetailsView = renderDetailsView;
+        window.renderTransportView = renderTransportView;
+        window.renderChecklistView = renderChecklistView;
+        window.updateCountdowns = updateCountdowns;
+
+        // BOOT INITIAL RENDER ON WINDOW LOAD
         window.onload = function() {
             switchBranch(currentBranch);
             renderAllViews();
+            updateCountdowns();
+            setInterval(updateCountdowns, 1000);
         };
     </script>
+</body>
+</html>

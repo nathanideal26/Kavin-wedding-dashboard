@@ -38,9 +38,9 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* HEADER FESTIVE BACKGROUND & OVERLAY */
+        /* FESTIVE HEADER BACKGROUND */
         .festive-header-bg {
-            background-image: linear-gradient(180deg, rgba(255, 253, 245, 0.82) 0%, rgba(254, 243, 199, 0.92) 100%), 
+            background-image: linear-gradient(180deg, rgba(255, 253, 245, 0.88) 0%, rgba(254, 243, 199, 0.94) 100%), 
                               url('https://i.ibb.co/mVZy9bM8/vibrant-indian-festive-background-with-intricate-decorations-1220676-34587.avif');
             background-size: cover;
             background-position: center;
@@ -54,20 +54,16 @@
             border: 1.5px solid #D4AF37;
         }
 
-        .gold-border-thick {
-            border: 2px solid #D4AF37;
-        }
-
         .gold-glow-card {
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
-            border: 2.5px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+            border: 2px solid #D4AF37;
             background: linear-gradient(135deg, #FFFDF7 0%, #FFF5DA 100%);
         }
 
-        /* Touch-friendly Large Checkbox for Mobile & iPad */
+        /* Touch-friendly Large Checkbox */
         .large-checkbox {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             accent-color: #10B981;
             cursor: pointer;
             border-radius: 6px;
@@ -78,7 +74,7 @@
             background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%) !important;
             color: #FFFFFF !important;
             border-color: #8B6508 !important;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.45);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
         }
         .inactive-tab {
             background-color: rgba(255, 255, 255, 0.9) !important;
@@ -93,24 +89,24 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased">
 
-    <!-- FESTIVE LUXURY GOLD HEADER WITH CIRCLE GANESHA LOGO -->
-    <header class="festive-header-bg border-b-2 border-amber-400 px-4 py-5 sm:px-8 text-center relative shadow-md">
-        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+    <!-- HEADER SECTION -->
+    <header class="festive-header-bg border-b-2 border-amber-400 px-3 py-3 sm:py-4 sm:px-6 text-center relative shadow-md">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-1">
             
             <!-- GANESHA CIRCLE LOGO -->
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-amber-500 shadow-md p-1 bg-white/90 overflow-hidden flex items-center justify-center">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-amber-500 shadow-md p-0.5 bg-white overflow-hidden flex items-center justify-center">
                 <img src="https://i.ibb.co/JFdWJxCX/images-3.jpg" alt="Lord Ganesha Logo" class="w-full h-full object-cover rounded-full">
             </div>
 
             <!-- Couple Names & Interlocking Rings -->
-            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
+            <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+                <h1 class="text-lg sm:text-2xl lg:text-3xl font-black font-cinzel text-amber-950 tracking-wider">
                     NAVINSAMY
                 </h1>
 
                 <!-- Interlocking Gold Rings Graphic -->
-                <div class="w-10 h-7 flex items-center justify-center" title="Interlocking Wedding Rings">
-                    <svg class="w-10 h-7 drop-shadow-md" viewBox="0 0 100 60" fill="none">
+                <div class="w-7 h-5 sm:w-8 sm:h-6 flex items-center justify-center" title="Interlocking Wedding Rings">
+                    <svg class="w-7 h-5 sm:w-8 sm:h-6 drop-shadow-xs" viewBox="0 0 100 60" fill="none">
                         <circle cx="36" cy="30" r="22" stroke="url(#goldRing1)" stroke-width="6" />
                         <circle cx="64" cy="30" r="22" stroke="url(#goldRing2)" stroke-width="6" />
                         <defs>
@@ -128,56 +124,56 @@
                     </svg>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black font-cinzel text-amber-950 tracking-wider drop-shadow-xs">
+                <h1 class="text-lg sm:text-2xl lg:text-3xl font-black font-cinzel text-amber-950 tracking-wider">
                     KAVYA
                 </h1>
             </div>
 
-            <!-- EVENT BRANCH SWITCHER (TEMPLE VS RECEPTION) -->
-            <div class="flex items-center justify-center gap-2 mt-1">
-                <button id="branch-btn-temple" onclick="switchBranch('TEMPLE')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700">
+            <!-- EVENT BRANCH SWITCHER -->
+            <div class="flex items-center justify-center gap-2 mt-0.5">
+                <button id="branch-btn-temple" onclick="window.switchBranch('TEMPLE')" class="px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700">
                     🛕 TEMPLE WEDDING (23 AUG)
                 </button>
-                <button id="branch-btn-reception" onclick="switchBranch('RECEPTION')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50">
+                <button id="branch-btn-reception" onclick="window.switchBranch('RECEPTION')" class="px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50">
                     🍸 RECEPTION (24 AUG - PICCA)
                 </button>
             </div>
 
-            <!-- Date & Location Banner (Dynamic based on Branch) -->
-            <div id="branch-info-banner" class="text-xs sm:text-sm font-bold text-amber-900 uppercase tracking-widest bg-white/70 px-4 py-1 rounded-full border border-amber-300">
+            <!-- Date & Location Banner -->
+            <div id="branch-info-banner" class="text-[10px] sm:text-xs font-bold text-amber-900 uppercase tracking-wider bg-white/80 px-3 py-0.5 rounded-full border border-amber-300 mt-0.5">
                 📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang
             </div>
 
             <!-- DUAL COUNTDOWN TIMERS -->
-            <div class="flex items-center justify-center gap-2 sm:gap-4 mt-2 flex-wrap w-full max-w-lg">
-                <div class="bg-amber-950/85 text-amber-100 border border-amber-400/60 px-3 py-1.5 rounded-xl text-center shadow-xs flex-1 min-w-[140px]">
-                    <div class="text-[10px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🛕 TEMPLE (23 AUG)</div>
-                    <div id="countdown-temple" class="font-mono text-xs sm:text-sm font-bold text-white tracking-wide">00d 00h 00m 00s</div>
+            <div class="flex items-center justify-center gap-2 mt-1 flex-wrap w-full max-w-md">
+                <div class="bg-amber-950/90 text-amber-100 border border-amber-400/70 px-2.5 py-1 rounded-xl text-center flex-1 min-w-[125px]">
+                    <div class="text-[9px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🛕 TEMPLE (23 AUG)</div>
+                    <div id="countdown-temple" class="font-mono text-xs font-bold text-white tracking-wide">00d 00h 00m 00s</div>
                 </div>
-                <div class="bg-amber-950/85 text-amber-100 border border-amber-400/60 px-3 py-1.5 rounded-xl text-center shadow-xs flex-1 min-w-[140px]">
-                    <div class="text-[10px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🍸 RECEPTION (24 AUG)</div>
-                    <div id="countdown-reception" class="font-mono text-xs sm:text-sm font-bold text-white tracking-wide">00d 00h 00m 00s</div>
+                <div class="bg-amber-950/90 text-amber-100 border border-amber-400/70 px-2.5 py-1 rounded-xl text-center flex-1 min-w-[125px]">
+                    <div class="text-[9px] uppercase tracking-wider font-cinzel font-bold text-amber-300">🍸 RECEPTION (24 AUG)</div>
+                    <div id="countdown-reception" class="font-mono text-xs font-bold text-white tracking-wide">00d 00h 00m 00s</div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 4 NAVIGATION TABS (STICKY ON SCROLL) -->
-    <div class="sticky top-0 z-40 bg-amber-100/95 backdrop-blur border-b border-amber-300 py-2.5 px-4 shadow-xs">
-        <div class="max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-3">
-            <button id="tab-btn-agenda" onclick="switchTab('AGENDA')" class="active-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+    <!-- STICKY NAVIGATION TABS -->
+    <div class="sticky top-0 z-40 bg-amber-100/95 backdrop-blur border-b border-amber-300 py-1.5 px-2 sm:px-4 shadow-xs">
+        <div class="max-w-4xl mx-auto flex items-center justify-center gap-1 sm:gap-2">
+            <button id="tab-btn-agenda" onclick="window.switchTab('AGENDA')" class="active-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1">
                 <span>📅</span>
                 <span>AGENDA</span>
             </button>
-            <button id="tab-btn-details" onclick="switchTab('DETAILS')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+            <button id="tab-btn-details" onclick="window.switchTab('DETAILS')" class="inactive-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1">
                 <span>👥</span>
                 <span>JOB DETAILS</span>
             </button>
-            <button id="tab-btn-transport" onclick="switchTab('TRANSPORT')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+            <button id="tab-btn-transport" onclick="window.switchTab('TRANSPORT')" class="inactive-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1">
                 <span>🚗</span>
                 <span>CAR CONVOY</span>
             </button>
-            <button id="tab-btn-checklist" onclick="switchTab('CHECKLIST')" class="inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1">
+            <button id="tab-btn-checklist" onclick="window.switchTab('CHECKLIST')" class="inactive-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1">
                 <span>✅</span>
                 <span>CHECKLIST</span>
             </button>
@@ -185,34 +181,34 @@
     </div>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+    <main class="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-4 py-4">
         <!-- TAB 1 — AGENDA VIEW -->
-        <div id="tab-view-agenda" class="space-y-4"></div>
+        <div id="tab-view-agenda" class="space-y-3"></div>
 
         <!-- TAB 2 — JOB DETAILS VIEW -->
-        <div id="tab-view-details" class="space-y-6 hidden"></div>
+        <div id="tab-view-details" class="space-y-4 hidden"></div>
 
         <!-- TAB 3 — CAR CONVOY LIST VIEW -->
-        <div id="tab-view-transport" class="space-y-6 hidden"></div>
+        <div id="tab-view-transport" class="space-y-4 hidden"></div>
 
         <!-- TAB 4 — PROGRESS CHECKLIST VIEW -->
-        <div id="tab-view-checklist" class="space-y-6 hidden"></div>
+        <div id="tab-view-checklist" class="space-y-4 hidden"></div>
     </main>
 
     <!-- CONFIRMATION RESET MODAL -->
     <div id="reset-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-        <div class="bg-white p-6 rounded-2xl gold-border max-w-sm w-full space-y-4 shadow-xl text-center">
-            <h3 class="font-cinzel font-bold text-lg text-slate-900">
+        <div class="bg-white p-5 rounded-2xl gold-border max-w-sm w-full space-y-3 shadow-xl text-center">
+            <h3 class="font-cinzel font-bold text-base text-slate-900">
                 RESET ALL CHECKLIST?
             </h3>
             <p class="text-xs text-slate-600">
                 Are you sure you want to uncheck all completed tasks and reset vehicle statuses?
             </p>
             <div class="flex items-center justify-center gap-3 pt-2">
-                <button onclick="closeResetModal()" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs">
+                <button onclick="window.closeResetModal()" class="px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs">
                     CANCEL
                 </button>
-                <button onclick="executeResetAll()" class="px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl text-xs">
+                <button onclick="window.executeResetAll()" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl text-xs">
                     YES, RESET
                 </button>
             </div>
@@ -220,21 +216,21 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="mt-auto bg-amber-100/90 border-t-2 border-amber-300 py-6 px-4 text-center text-xs text-amber-900 space-y-1">
-        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-950 tracking-widest text-sm">
+    <footer class="mt-auto bg-amber-100/90 border-t-2 border-amber-300 py-3 px-4 text-center text-xs text-amber-900 space-y-0.5">
+        <div class="flex items-center justify-center gap-2 font-cinzel font-bold text-amber-950 tracking-widest text-xs">
             <span>NAVINSAMY</span>
             <span class="text-red-600">♥</span>
             <span>KAVYA</span>
         </div>
-        <div class="text-[11px] text-amber-900 font-bold">
-            23 • 08 • 2026 💍
+        <div class="text-[10px] text-amber-900 font-bold">
+            23 • 08 • 2026 💍 & 24 • 08 • 2026 🍸
         </div>
     </footer>
 
+    <!-- SCRIPT SECTION -->
     <script>
-        // MASTER CAR CONVOY LIST DATA (OFFICIAL LIST)
+        // MASTER CAR CONVOY LIST DATA
         var CAR_CONVOY_LIST = [
-            // GROOM CONVOY (HOUSE TO HALL - 2 WAY)
             {
                 id: 'car-1',
                 role: 'Groom Main Car #1 (Lead)',
@@ -279,7 +275,6 @@
                 deptTime: '09:15 AM',
                 route: 'Groom House ➔ Temple (2-Way)'
             },
-            // BRIDE CONVOY (HOTEL TO HALL - 2 WAY)
             {
                 id: 'car-5',
                 role: 'Bride Main Car #1 (Lead)',
@@ -315,13 +310,11 @@
             }
         ];
 
-        // SPARE CARS LIST
         var SPARE_CARS = [
             { model: 'Toyota Camry', plate: 'PJL 2899' },
             { model: 'Mazda', plate: 'PPA 564' }
         ];
 
-        // TEMPLE PARKING ALLOCATION (8 PARKING SPOTS INSIDE TEMPLE)
         var TEMPLE_PARKING_LIST = [
             { spot: 1, model: 'Toyota Alphard', plate: 'VHR 1111' },
             { spot: 2, model: 'Denza', plate: 'VMP 1111' },
@@ -342,15 +335,16 @@
                 endMins: 570,
                 title: 'Groom Departure From House To Hall',
                 todo: [
-                    'Groom departure confirmed from home',
-                    'Car leader & drivers ready (Saccin, Victor, Mano Uncle Team, Senthil)',
-                    'Groom Convoy Positioning verified (1. Porsche ➔ 2. Denza ➔ 3. Alphard ➔ 4. S Class)',
-                    'Car 1 (Porsche - SAB 1111 V) ready with Groom Navinsamy',
-                    'Car 2 (Denza - VMP 1111) loaded with Dato V Harikrishnan & family',
-                    'Car 3 (Alphard - VHR 1111) loaded with Mr Veerasamy Harikrishnan & family',
-                    'Car 4 (S Class - CEH 1111) loaded with Jayakumar & guests'
+                    'Car Leader: Follow CAR LIST & CAR POSITIONING (Porsche ➔ Denza ➔ Alphard ➔ S-Class)',
+                    'Welcome Table Leader: Organize welcoming table with team & ushers to welcome all guests wholeheartedly',
+                    'Welcome Table Leader: Inform ushers to seat attending VIPs in designated VIP seating area',
+                    'Welcome Table Leader: Seat identified bride & groom family members in designated family area according to list',
+                    'Dressing Leader: Check & ensure all required items are prepared in changing room',
+                    'Rituals Leader: Ensure all prayer items are prepared & complete on stage and for entrance',
+                    'Vendor Leader: Ensure all vendors are prepared and informed on event agenda',
+                    'Food Leader: Start serving starters from 09:00 AM onwards'
                 ],
-                responsible: ['Saccin (Driver)', 'Victor (Driver)', 'Mano Uncle Team', 'Senthil (Driver)', 'Groom Convoy Leader'],
+                responsible: ['Car Leader', 'Welcome Table Leader', 'Dressing Leader', 'Rituals Leader', 'Vendor Leader', 'Food Leader'],
                 people: ['Navinsamy (Groom)', 'Dato V Harikrishnan', 'Mehgulan Harikrishnan', 'Mano Uncle', 'Ayya Samy', 'Mr Veerasamy Harikrishnan', 'Ms Sus Shanthi', 'Singaravelan', 'Blessilda', 'Jayakumar', 'Salma', 'Jegadish Uncle India'],
                 walkingList: [
                     '1. Porsche SAB 1111 V (Driver: Saccin | Groom Navinsamy)',
@@ -360,7 +354,7 @@
                 ],
                 song: '',
                 led: '',
-                important: 'Maintain exact convoy sequence: Porsche ➔ Denza ➔ Alphard ➔ S Class. Reverse park upon arrival at temple!'
+                important: 'Starters start from 9:00 AM onwards. Reverse park cars inside temple upon arrival.'
             },
             {
                 id: 'evt-2',
@@ -369,258 +363,286 @@
                 endMins: 580,
                 title: 'Groom Arrival At Temple',
                 todo: [
-                    'Groom arrived at temple main entrance',
-                    'All 6 main vehicles reverse parked inside temple according to convoy order',
-                    'Welcome Maalai ready and presented',
-                    'Aarti ceremony completed',
-                    'Pattam ceremony completed',
-                    'Photoshoot completed at entrance arch'
+                    'Entrance Leader: Handle receiving of Groom & family upon reaching temple & prepare walking list for Groom first entrance',
+                    'Car Parking Leader: Organize car parking at temple and reverse park cars after Groom arrives',
+                    'Rituals Leader: Ensure entrance rituals are smooth (Welcome Maalai, Aarti at entrance, Pattam tied at forehead)',
+                    'Photoshoot upon arrival at entrance arch completed'
                 ],
-                responsible: ['Car Parking Leader', 'Receiving Leader', 'Ritual Leader', 'Entrance Leader'],
-                people: ['Navinsamy (Groom)', 'Dato V Harikrishnan & Family', 'Receiving Family', 'Aarti Ladies'],
+                responsible: ['Entrance Leader', 'Car Parking Leader', 'Rituals Leader'],
+                people: ['Navinsamy (Groom)', 'Dato V Harikrishnan & Family', 'Entrance Family', 'Aarti Ladies'],
                 walkingList: [
                     '1. Groom Arrival Convoy entering temple gate',
                     '2. Groom Navinsamy escorted by Best Man & Elders',
-                    '3. Receiving Family presenting Welcome Maalai & Aarti'
+                    '3. Entrance Family presenting Welcome Maalai & Aarti'
                 ],
                 song: 'Nadaswaram Welcoming Thavil Melam',
                 led: 'Gold Traditional Welcoming Motif',
-                important: 'All 6 convoy cars MUST be reverse parked according to convoy order inside temple.'
+                important: 'All convoy cars MUST be reverse parked inside temple according to convoy order.'
             },
             {
                 id: 'evt-3',
                 time: '09:40 AM',
                 startMins: 580,
                 endMins: 585,
-                title: 'Bride Departs From Hotel / Palm Villa',
+                title: 'Bride To Depart From Palm Villa',
                 todo: [
-                    'Mano Uncle Van VLV 3181 departed early with elders (Tata, Amama, Atte, Mama, Ravi, Saanjey, Vijay, Dhivya)',
-                    'Bride main car BMW i7 (SAB 1111 H) ready with Driver Shankar & Bride Kavya',
-                    'Bride family car Vellfire (PLR 1111) ready with Driver Michael',
-                    'Bride Convoy Positioning verified (1. BMW i7 ➔ 2. Vellfire)',
-                    'Bride departure confirmed to temple'
+                    'Car Leader: Follow CAR LIST & ASSIGNED PASSENGERS with allocated drivers',
+                    'Ritual Leader: Prepared with entrance ritual for Bride upon arrival at temple',
+                    'Mano Uncle Van VLV 3181 departed early with elders'
                 ],
-                responsible: ['Shankar (Driver)', 'Michael (Driver)', 'Mano Uncle Team (Van Driver)', 'Bride Convoy Leader'],
+                responsible: ['Car Leader', 'Ritual Leader'],
                 people: ['Kavya Cynthia (Bride)', 'Ms Sonashreya', 'Ms Nirvinaah', 'Mr Sathiya', 'Ms Uma', 'Deepa', 'Tata', 'Amama', 'Atte', 'Mama', 'Ravi', 'Saanjey', 'Vijay', 'Dhivya'],
                 walkingList: [
-                    '1. Mano Uncle Van VLV 3181 (Leaves earlier to hall)',
-                    '2. BMW i7 SAB 1111 H (Driver: Shankar | Bride Kavya, Ms Sonashreya, Ms Nirvinaah)',
-                    '3. Vellfire PLR 1111 (Driver: Michael | Mr Sathiya, Ms Uma, Deepa)'
+                    '1. Mano Uncle Van VLV 3181 (Leaves early)',
+                    '2. BMW i7 SAB 1111 H (Driver: Shankar | Bride Kavya Cynthia)',
+                    '3. Vellfire PLR 1111 (Driver: Michael | Family)'
                 ],
                 song: '',
                 led: '',
-                important: 'Mano Uncle Van VLV 3181 leaves earlier to hall and will park elsewhere after drop off.'
+                important: 'Van leaves earlier and will park elsewhere after drop off.'
             },
             {
                 id: 'evt-4',
                 time: '09:45 AM',
                 startMins: 585,
                 endMins: 595,
-                title: 'Groom First Entrance Procession',
+                title: 'Groom First Entrance',
                 todo: [
-                    'Groom entrance procession lineup formed',
-                    'Nadaswaram & Thavil playing entrance beat',
-                    'Groom walked down aisle to stage',
-                    'Groom seated at Manavarai (stage)'
+                    'Entrance Leader: Ensure all is smooth for Groom walk in',
+                    'Stage Leader: Ensure all is prepared on stage',
+                    'Technical Leader: Audio, lighting & visuals set (Song: MUZHUMATHI Live Performance, LED: Live Streaming)',
+                    'Groom along with people on list walking down aisle',
+                    'Only Groom, family members & best man go on stage',
+                    'Remaining people exit via left side entrance at end of walk',
+                    'Groom & best man seated in designated area, family members get down off stage once Groom seated'
                 ],
                 responsible: ['Entrance Leader', 'Stage Leader', 'Technical Leader'],
-                people: ['Navinsamy (Groom)', 'Harikrishnan (Father)', 'Groom Mother', 'Maternal Uncles', 'Flower Girls'],
+                people: ['Navinsamy (Groom)', 'Dato V Harikrishnan', 'Groom Mother', 'Maternal Uncles', 'Best Man', 'Flower Girls'],
                 walkingList: [
-                    '1. Nadaswaram & Thavil Musicians (Leading)',
+                    '1. Nadaswaram & Thavil Musicians',
                     '2. Flower Girls & Garland Bearers',
                     '3. Groom Navinsamy accompanied by Maternal Uncles & Best Man',
-                    '4. Groom Parents & Close Family Members'
+                    '4. Family members (Remaining exit via left side door)'
                 ],
-                song: 'Traditional Mangala Vaathiyam - Groom Procession',
-                led: 'Dynamic Golden Rangoli & Royal Arch Visual',
-                important: 'Play high-tempo entrance music when Groom enters main hall.'
+                song: 'MUZHUMATHI (Live Performance)',
+                led: 'Live Streaming',
+                important: 'Remaining walk-in members to exit via LEFT SIDE entrance after walk.'
             },
             {
                 id: 'evt-5',
                 time: '09:55 AM - 10:10 AM',
                 startMins: 595,
                 endMins: 610,
-                title: 'Groom First Ritual & Dressing Transition',
+                title: 'Groom First Ritual & Groom To Dressing Room',
                 todo: [
-                    'Ganesh Puja & wristband (Kappu) tied',
-                    'Priest blessed Groom initial prayers',
-                    'Groom escorted to Groom Dressing Room for attire check'
+                    'Rituals Leader: Perform Vigneswara Poojai & Puniyavashanam on stage',
+                    'Stage Leader: Ensure all is smooth on stage',
+                    'Dressing Leader: Escort Groom & Best Man to changing room upon ritual completion via side exit',
+                    'Groom getting ready for second entrance'
                 ],
-                responsible: ['Ritual Leader', 'Dressing Leader', 'Priest (Iyer)'],
-                people: ['Navinsamy (Groom)', 'Priest (Iyer)', 'Groom Best Man', 'Ritual Assistants'],
+                responsible: ['Rituals Leader', 'Stage Leader', 'Dressing Leader'],
+                people: ['Navinsamy (Groom)', 'Best Man', 'Priest (Iyer)', 'Ritual Assistants'],
                 walkingList: [
-                    '1. Groom escorted from Stage to Groom Dressing Room'
+                    '1. Groom & Best Man escorted from Stage to Dressing Room via side exit'
                 ],
                 song: '',
                 led: '',
-                important: 'Prepare Muhurtham attire (Veshti & Angavastram) in Groom dressing room.'
+                important: 'Escort Groom via side exit for quick attire change.'
             },
             {
                 id: 'evt-6',
                 time: '10:00 AM',
                 startMins: 600,
                 endMins: 610,
-                title: 'Bride Arrival At Temple',
+                title: 'Bride\'s Arrival At Temple',
                 todo: [
-                    'Bride car arrived at temple porch',
-                    'Rosewater spraying & flower welcoming completed',
-                    'Bride escorted to Bride Dressing Room',
-                    'Makeup artist ready for final touchups'
+                    'Entrance Leader: Receive Bride at entrance spot & prepare people on Bride walking list',
+                    'Car Parking Leader: Arrange parking and ensure car is reverse parked',
+                    'Ritual Leader: Ensure entrance rituals are smooth (Welcome Maalai, Aarti, Pattam tied at forehead)',
+                    'Technical Leader: Ensure all prepared for Bride first entrance',
+                    'Photoshoot of Bride at entrance completed'
                 ],
-                responsible: ['Receiving Leader', 'Dressing Leader', 'Entrance Leader'],
-                people: ['Kavya Cynthia (Bride)', 'Bride Parents', 'Bridesmaids', 'Receiving Team'],
+                responsible: ['Entrance Leader', 'Car Parking Leader', 'Ritual Leader', 'Technical Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Bride Parents', 'Bridesmaids', 'Entrance Team'],
                 walkingList: [
-                    '1. Bride Kavya escorted from Car SAB 1111 H by Bridesmaids',
-                    '2. Receiving Team with Rosewater & Flower Petals',
-                    '3. Direct ushering to Bride Dressing Room'
+                    '1. Bride Kavya Cynthia arriving in BMW i7 SAB 1111 H',
+                    '2. Entrance Team with Rosewater & Aarti',
+                    '3. Photoshoot at entrance arch'
                 ],
                 song: 'Soft Flute & Veena Welcoming Melody',
                 led: 'Soft Rose Gold Floral Petal Cascade',
-                important: 'Escort Bride directly to dressing room upon arrival.'
+                important: 'Reverse park Bride cars immediately upon arrival.'
             },
             {
                 id: 'evt-7',
                 time: '10:10 AM - 10:25 AM',
                 startMins: 610,
                 endMins: 625,
-                title: 'Bride First Entrance & First Ritual',
+                title: 'Bride\'s First Entrance, First Ritual & To Dressing Room',
                 todo: [
-                    'Bride first entrance procession organized',
-                    'Bride arrived on stage',
-                    'Preliminary Bride Puja completed',
-                    'Bride escorted to Dressing Room for Koorai Saree change'
+                    'Entrance Leader: Ensure all is smooth for Bride walk in & prepare people for Groom second entrance',
+                    'Stage Leader: Ready for Bride entrance on stage',
+                    'Technical Leader: Set Audio & LED (Song: SITTA KALYANAM VAIBOGHAME - Play ONLY after 5mins 25sec, LED: Live Streaming)',
+                    'Bride walks in with people on list (Bride, bridesmaids, family go on stage, others exit via side exit)',
+                    'Ritual Leader & Stage Leader: Conduct Vigneswara Poojai & Puniyavashanam on stage',
+                    'Dressing Leader: Escort Bride & bridesmaids to changing room via side exit for Koorai Saree change'
                 ],
-                responsible: ['Entrance Leader', 'Stage Leader', 'Ritual Leader'],
-                people: ['Kavya Cynthia (Bride)', 'Maternal Uncles', 'Bridesmaids', 'Priest (Iyer)'],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Technical Leader', 'Ritual Leader', 'Dressing Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Bridesmaids', 'Maternal Uncles', 'Bride Parents', 'Priest'],
                 walkingList: [
-                    '1. Bridesmaids with Flower Canopy / Lamps',
+                    '1. Bridesmaids & Flower Canopy',
                     '2. Bride Kavya Cynthia walked by Maternal Uncles',
-                    '3. Bride Mother & Sister following procession'
+                    '3. Family members (Others exit via side exit)'
                 ],
-                song: 'Gowri Kalyanam / Divine Bridal Entrance Hymn',
-                led: 'Divine Lotus Flower Bloom Visual',
-                important: 'Ensure smooth transition for Koorai Saree attire change.'
+                song: 'SITTA KALYANAM VAIBOGHAME (Only play after 5 mins 25 seconds of song)',
+                led: 'Live Streaming',
+                important: 'AUDIO CUE: Play SITTA KALYANAM VAIBOGHAME starting at 05:25 timestamp!'
             },
             {
                 id: 'evt-8',
-                time: '10:35 AM - 10:40 AM',
+                time: '10:35 AM',
                 startMins: 635,
                 endMins: 640,
-                title: 'Groom Second Entrance & Parents On Stage',
+                title: 'Groom From Dressing Room To Entrance Spot & Parents On Stage',
                 todo: [
-                    'Groom second attire change verified',
-                    'Groom Second Entrance executed to stage',
-                    'Bride Parents & Groom Parents seated on stage'
+                    'Dressing Leader: Escort Groom to entrance spot and handover to Entrance Leader',
+                    'Entrance Leader: Prepare people on walking list for Groom second entrance',
+                    'Entrance Leader: Assemble people standing on stage and handover to Stage Leader',
+                    'Rituals Leader & Stage Leader: Ensure all prepared for second entrance on stage',
+                    'Stage Leader: Ensure all family members are on stage before Groom second entrance',
+                    'Stage Leader: Ensure portrait of Datin Manju placed on stage & related prayer items prepared',
+                    'Stage Leader: For Bride side family, customized cards will be given (ONLY allow cardholders on stage)',
+                    'Methi ritual performed by Saanjay (Bride cousin) at entrance spot & Photoshoot completed'
                 ],
-                responsible: ['Stage Leader', 'Ritual Leader', 'Entrance Leader'],
-                people: ['Navinsamy (Groom)', 'Groom Parents', 'Bride Parents', 'Stage Crew'],
+                responsible: ['Dressing Leader', 'Entrance Leader', 'Rituals Leader', 'Stage Leader', 'Technical Leader'],
+                people: ['Navinsamy (Groom)', 'Saanjay (Bride Cousin)', 'Parents of Bride & Groom', 'Stage Leader'],
                 walkingList: [
-                    '1. Groom Navinsamy in Muhurtham Veshti',
-                    '2. Groom Parents & Bride Parents ushering to Stage Chairs'
+                    '1. Groom Navinsamy at Entrance Spot with Saanjay for Methi ritual',
+                    '2. Stage Leader verifying customized cards for Bride side family'
                 ],
-                song: 'Royal Mangala Vaathiyam Beat',
-                led: 'Golden Temple Pillars Motif',
-                important: 'Confirm both pairs of parents are comfortably seated on stage.'
+                song: '',
+                led: '',
+                important: 'CRITICAL: Stage Leader only permits Bride side family members showing CUSTOMIZED CARDS to get on stage!'
             },
             {
                 id: 'evt-9',
-                time: '10:55 AM - 11:00 AM',
-                startMins: 655,
-                endMins: 660,
-                title: 'Bride Second Entrance (Koorai Saree)',
+                time: '10:40 AM',
+                startMins: 640,
+                endMins: 655,
+                title: 'Groom\'s Second Entrance',
                 todo: [
-                    'Bride Koorai Saree drape verified complete',
-                    'Bride Second Entrance walk executed',
-                    'Bride seated on stage next to Groom',
-                    'Buffet food service line opened for guests'
+                    'Entrance Leader: Ensure all is smooth for Groom walk in & prepare people for Bride second entrance',
+                    'Stage Leader & Ritual Leader: Ready for Groom entrance',
+                    'Vendor Leader: Audio, lighting & visuals set (Song: Manamagan Sathyam - Kochadaiyaan, LED: Live Streaming)',
+                    'Groom walks in ALONE and gets on stage',
+                    'Upon reaching stage, Groom first seeks blessings of Datin Manju',
+                    'Paatham Poojai performed on stage'
                 ],
-                responsible: ['Entrance Leader', 'Stage Leader', 'Food Leader'],
-                people: ['Kavya Cynthia (Bride in Koorai Saree)', 'Maternal Uncles', 'Bridesmaids', 'Tray Bearers'],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Vendor Leader', 'Ritual Leader'],
+                people: ['Navinsamy (Groom)', 'Parents', 'Priest (Iyer)'],
                 walkingList: [
-                    '1. Flower Girls with Rose Petals',
-                    '2. Koorai Saree Bride Kavya escorted by Maternal Uncles',
-                    '3. Relatives carrying auspicious trays (Seer Varisai)'
+                    '1. Groom Navinsamy walking ALONE down aisle to stage'
                 ],
-                song: 'Koorai Saree Entrance Traditional Nadaswaram',
-                led: 'Golden Temple Pillars & Gold Dust Effect',
-                important: 'Open guest buffet food line simultaneously with second entrance.'
+                song: 'Manamagan Sathyam (Kochadaiyaan)',
+                led: 'Live Streaming',
+                important: 'Groom walks ALONE. First action on stage is seeking blessing of Datin Manju.'
             },
             {
                 id: 'evt-10',
-                time: '11:15 AM - 11:20 AM',
-                startMins: 675,
-                endMins: 680,
-                title: 'Ring & Talli Tying Ceremony (Muhurtham)',
-                isTalli: true,
+                time: '10:55 AM',
+                startMins: 655,
+                endMins: 660,
+                title: 'Bride From Dressing Room To Entrance Spot',
                 todo: [
-                    'Talli / Thali gold chain verified on tray',
-                    'Talli tray passed around hall for guest blessings',
-                    'Yellow flower petals & Akshatai rice distributed',
-                    'Priest gave final nod for Muhurtham minute',
-                    'Ketty Mellam team ready on standby',
-                    'Groom tied three knots of Talli around Bride neck',
-                    'Flower shower showered over couple',
-                    'Garland exchange (Maalai Maatral) completed',
-                    'Pottu / Sindoor application completed'
+                    'Dressing Leader: Escort Bride to entrance spot and handover to Entrance Leader',
+                    'Entrance Leader: Prepare people on walking list for Bride second entrance',
+                    'Rituals Leader, Stage Leader, Technical Leader: Ensure all prepared on stage for Bride second entrance',
+                    'Photoshoot completed at entrance spot'
                 ],
-                responsible: ['Ritual Leader', 'Stage Leader', 'Technical Leader', 'Vendor Leader'],
-                people: ['Navinsamy (Groom)', 'Kavya Cynthia (Bride)', 'Priest (Iyer)', 'Groom Parents', 'Bride Parents', 'Talli Tray Carriers', 'Ketty Mellam Team'],
+                responsible: ['Dressing Leader', 'Entrance Leader', 'Rituals Leader', 'Stage Leader', 'Technical Leader'],
+                people: ['Kavya Cynthia (Bride in Koorai Saree)', 'Bridesmaids', 'Dressing Team'],
                 walkingList: [
-                    '1. Talli Tray Bearers passing tray among elders in hall',
-                    '2. Priest blessing Talli on Stage',
-                    '3. Groom Navinsamy & Bride Kavya at central Manavarai'
+                    '1. Bride Kavya Cynthia escorted to entrance spot'
                 ],
-                song: 'LOUD KETTY MELLAM & THAVIL RHYTHM',
-                led: 'BRIGHT GOLD MUHURTHAM ANIMATION',
-                important: 'CRITICAL: At 11:17 AM exact signal, Ketty Mellam MUST play at full volume!'
+                song: '',
+                led: '',
+                important: 'Verify Koorai Saree drape & jewelry before second entrance.'
             },
             {
                 id: 'evt-11',
-                time: '11:20 AM ONWARDS',
-                startMins: 680,
-                endMins: 750,
-                title: 'Stage Photoshoot & Stage Games',
+                time: '11:00 AM',
+                startMins: 660,
+                endMins: 675,
+                title: 'Bride\'s Second Entrance & Buffet Area Food Opened',
                 todo: [
-                    'VIPs & immediate family photoshoot completed',
-                    'General guest photo line managed',
-                    'Ring searching game in brass pot conducted',
-                    'Ang Pao receiving desk active'
+                    'Entrance Leader & Stage Leader: Ready for Bride second entrance',
+                    'Technical Leader: Set Audio & LED (Song: Manamagal Sathyam - Kochadaiyaan, LED: Live Streaming)',
+                    'Bride walks in ALONE and gets on stage',
+                    'Paatha Poojai performed on stage',
+                    'Akshatai Rice Distribution: Once priest hands over Talli tray to Mr Veera, he and team pass yellow rice to front 2 rows of family & VIP guests',
+                    'Food Leader: Start buffet area food serving for guests'
                 ],
-                responsible: ['Stage Leader', 'Vendor Leader (Photographer)', 'Ang Pao Leader'],
-                people: ['Newlyweds (Navinsamy & Kavya)', 'VIP Guests', 'Family Members', 'Photographer Team'],
+                responsible: ['Entrance Leader', 'Stage Leader', 'Technical Leader', 'Food Leader'],
+                people: ['Kavya Cynthia (Bride)', 'Mr Veerasamy Harikrishnan', 'VIP Guests', 'Buffet Catering Team'],
                 walkingList: [
-                    '1. VIP Family Photo Queue',
-                    '2. General Guests Photo Queue'
+                    '1. Bride Kavya Cynthia walking ALONE down aisle to stage',
+                    '2. Mr Veera & team passing Akshatai rice to front 2 rows'
                 ],
-                song: 'Joyful Ambient Melodies',
-                led: 'Couple Name Banner & Photo Gallery Slideshow',
-                important: 'Maintain smooth photo queue for guests.'
+                song: 'Manamagal Sathyam (Kochadaiyaan)',
+                led: 'Live Streaming',
+                important: 'Open guest buffet food serving simultaneously with Bride second entrance.'
             },
             {
                 id: 'evt-12',
-                time: '01:00 PM - 02:00 PM',
-                startMins: 780,
-                endMins: 840,
-                title: 'Couple Lunch & Event Conclusion',
+                time: '11:15 AM - 11:20 AM',
+                startMins: 675,
+                endMins: 680,
+                title: 'Talli Tying (Muhurtham)',
+                isTalli: true,
                 todo: [
-                    'Couple & family ushered to VIP lunch table',
-                    'Caterer served special bridal meal',
-                    'Vendor tokens & Ang Paos distributed',
-                    'Return vehicles standby at porch (Porsche SAB 1111 V & BMW i7 SAB 1111 H)'
+                    'Food Leader: Start buffet area serving for VIPs',
+                    'Ang Pao Leaders: Take charge on stage once Talli is tied for receiving Ang Paos',
+                    'Stage Leaders: Prepared for photoshoot of VIPs with Bride & Groom & control crowd on stairs (VIP Given Priority)',
+                    'Vendor Leader: Be alert as priest gives signals for Ketti Mellam during Talli tying & ensure Live Feed',
+                    'Groom ties three knots of Talli around Bride neck at Muhurtham moment',
+                    'Couple games played between couple after Talli is tied'
                 ],
-                responsible: ['Food Leader', 'Saccin (Driver)', 'Shankar (Driver)', 'Ang Pao Leader'],
-                people: ['Newlyweds (Navinsamy & Kavya)', 'Parents', 'Transport Crew'],
+                responsible: ['Food Leader', 'Ang Pao Leaders', 'Stage Leaders', 'Vendor Leader'],
+                people: ['Navinsamy (Groom)', 'Kavya Cynthia (Bride)', 'Priest (Iyer)', 'Ang Pao Leaders', 'VIP Guests'],
                 walkingList: [
-                    '1. Couple & Parents escorted to VIP Dining Area',
-                    '2. Departure to Return Vehicles'
+                    '1. Talli Tying Muhurtham Ritual on Stage',
+                    '2. Ang Pao Leaders taking position on stage',
+                    '3. VIP Photoshoot queue on stage stairs'
                 ],
-                song: '',
-                led: 'Thank You For Blessing Our Wedding',
-                important: 'Ensure couple enjoys quiet lunch before departure.'
+                song: 'LOUD KETTY MELLAM & THAVIL RHYTHM',
+                led: 'Live Feed & Muhurtham Graphic',
+                important: 'CRITICAL: Vendor Leader stay alert for Priest signal to blast Ketti Mellam!'
+            },
+            {
+                id: 'evt-13',
+                time: '11:20 AM ONWARDS',
+                startMins: 680,
+                endMins: 840,
+                title: 'Photoshoot With Guests, Couple Games & Couple Lunch',
+                todo: [
+                    'Stage Leaders & Photographer: Manage photo queue with guests on stage (VIP priority)',
+                    'Couple games conducted on stage',
+                    'Food Leader: Escort newlyweds & parents to VIP table for couple lunch',
+                    'Car Leader & Drivers: Standby return vehicles at porch (Porsche SAB 1111 V & BMW i7 SAB 1111 H)'
+                ],
+                responsible: ['Stage Leaders', 'Food Leader', 'Car Leader'],
+                people: ['Newlyweds (Navinsamy & Kavya)', 'Parents', 'Photographer Team', 'Drivers (Saccin, Shankar)'],
+                walkingList: [
+                    '1. Guest Stage Photoshoot Line',
+                    '2. Escort Couple to VIP Dining Table'
+                ],
+                song: 'Joyful Festive Melodies',
+                led: 'Couple Name Banner & Photo Gallery',
+                important: 'Drivers standby vehicles at porch for couple departure.'
             }
         ];
 
-        // MASTER ITINERARY DATA - WEDDING RECEPTION (24 AUG 2026 @ PICCA CONVENTION CENTRE)
+        // MASTER ITINERARY DATA - WEDDING RECEPTION (MONDAY, 24TH AUGUST 2026 @ BALLROOM 3, PICCA)
         var RECEPTION_EVENTS = [
             {
                 id: 'rcp-1',
@@ -629,14 +651,14 @@
                 endMins: 720,
                 title: 'Rehearsal Bride & Groom & Family Dance Group',
                 todo: [
-                    'Bride & Groom stage entrance rehearsal completed',
-                    'Family Dance Group choreography walkthrough executed',
-                    'Stage positioning & protocol team briefing done'
+                    'Bride & Groom stage entrance rehearsal walkthrough',
+                    'Family Dance Group routine rehearsal on stage',
+                    'Protocol team and emcee stage entry briefing'
                 ],
-                responsible: ['Coordinator Team', 'Starlight Entertainment', 'Protocol Team'],
-                people: ['MC', 'Bride (Kavya)', 'Groom (Navinsamy)', 'Family Dance Members', 'Protocol Team'],
+                responsible: ['Coordinator Team', 'Starlight Entertainment'],
+                people: ['MC', 'Bride (Kavya)', 'Groom (Navinsamy)', 'Dance Members', 'Protocol Team'],
                 song: 'Rehearsal Audio Track',
-                important: 'Ensure sound setup is ready for early rehearsal.'
+                important: 'Conduct stage entrance and family dance positioning in Ballroom 3.'
             },
             {
                 id: 'rcp-2',
@@ -645,14 +667,13 @@
                 endMins: 840,
                 title: 'Rehearsal Rhythm Up Dancers',
                 todo: [
-                    'Opening dance sequence rehearsal completed',
-                    'Royalties entrance dance cue tested',
-                    'Stage lighting synchronization verified'
+                    'Rhythm Up Dancers opening dance sequence rehearsal',
+                    'Royalties entrance dance cue & positioning test'
                 ],
                 responsible: ['Coordinator Team', 'Starlight Entertainment'],
                 people: ['Rhythm Up Dancers', 'Stage Crew'],
-                song: 'Rhythm Up Performance Track',
-                important: 'Confirm stage floor clean for dancers.'
+                song: 'Rhythm Up Rehearsal Audio Track',
+                important: 'Verify lighting cues and entry pathways for dancers.'
             },
             {
                 id: 'rcp-3',
@@ -661,14 +682,13 @@
                 endMins: 900,
                 title: 'Sound Check Abimaniac',
                 todo: [
-                    'Band instrument mic check completed',
-                    'Audio playback levels & balance checked inside Ballroom 3',
-                    'Live performance monitor sound verified'
+                    'Instrument mic check & audio balance in Ballroom 3',
+                    'Sound level verification for live band performance'
                 ],
                 responsible: ['Coordinator Team', 'Starlight Entertainment'],
                 people: ['Abimaniac Band Members', 'Sound Engineers'],
-                song: 'Live Band Instrumental Test',
-                important: 'Complete full audio check before vendor standby.'
+                song: 'Abimaniac Sound Check Audio',
+                important: 'Ensure clean audio levels for live instrumental performance.'
             },
             {
                 id: 'rcp-4',
@@ -677,36 +697,41 @@
                 endMins: 1110,
                 title: 'Crew & Vendors Standby Phase',
                 todo: [
-                    'Photographer & Videographer on standby (Andrewkoe Studio & SCW Filmmakers)',
-                    'Emcee Mohana Priya & Hemant on standby',
-                    'Foyer Saxophonist ready at Cocktail area',
-                    'Entrance & Performance Dancers (Rhythm Up & Family Dance) ready',
-                    'Entertainment band (Abimaniac) on standby',
-                    'Photo Booth Kotak operational at Foyer',
-                    'Registration team & Juslina Usherettes stationed at counter',
-                    'DJ Dass sound console test completed',
-                    'Decorations (Sweettooth) final inspection'
+                    'Photographer & Videographer on standby (ANDREWKOE STUDIO & SCW FILMMAKERS)',
+                    'Emcees MOHANA PRIYA & HEMANT on standby',
+                    'Sound & Lighting STARLIGHT ENTERTAINMENT active',
+                    'Foyer Performance SAXOPHONIST ready at Cocktail Area',
+                    'Entrance & Dance Performance RHYTHM UP DANCERS & FAMILY DANCE GROUP ready',
+                    'Entertainment Band ABIMANIAC on standby',
+                    'Photo Booth KOTAK operational at Foyer',
+                    'DJ DASS console & sound test',
+                    'Usherettes JUSLINA stationed at registration',
+                    'Decorator SWEETTOOTH final inspection'
                 ],
                 responsible: ['Coordinator Team', 'Starlight Entertainment', 'Registration Team'],
-                people: ['Andrewkoe Studio', 'SCW Filmmakers', 'Mohana Priya & Hemant (MC)', 'Saxophonist', 'Rhythm Up Dancers', 'Abimaniac', 'Kotak Photo Booth', 'DJ Dass', 'Juslina Usherettes', 'Sweettooth Decorators'],
-                important: 'All teams MUST be at assigned stations by 6:00 PM exact.'
+                people: [
+                    'SWEETTOOTH Decorators', 'ANDREWKOE STUDIO', 'SCW FILMMAKERS', 'STARLIGHT ENTERTAINMENT',
+                    'MOHANA PRIYA & HEMANT (Emcee)', 'SAXOPHONIST', 'RHYTHM UP DANCERS', 'ABIMANIAC',
+                    'FAMILY DANCE GROUP', 'KOTAK Photo Booth', 'DJ DASS', 'JUSLINA Usherettes'
+                ],
+                important: 'ALL teams, vendors, and usherettes MUST be at designated positions by 06:00 PM exact.'
             },
             {
                 id: 'rcp-5',
                 time: '06:30 PM',
                 startMins: 1110,
                 endMins: 1155,
-                title: 'Arrival of Guests & Foyer Cocktail',
+                title: 'Arrival of Guests, Foyer Cocktail & Live Saxophonist',
                 todo: [
-                    'Guest registration counter active',
+                    'Guest registration counter active at Foyer',
                     'Cocktail served by SAB at Foyer Area',
                     'Live Saxophonist performance at Foyer Area',
-                    'Groom & Bride parents & siblings greeting guests at Foyer'
+                    'Parents & Siblings greeting guests at Foyer'
                 ],
-                responsible: ['Coordinator Team', 'Usherettes', 'Starlight Entertainment'],
-                people: ['Groom Father', 'Groom Siblings', 'Bride Parents', 'Bride Siblings', 'Registration Team', 'Saxophonist'],
+                responsible: ['Coordinator Team', 'Starlight Entertainment', 'Usherettes'],
+                people: ['Groom\'s Father', 'Groom\'s Siblings', 'Bride\'s Parents', 'Bride\'s Siblings', 'Registration Team', 'Saxophonist'],
                 song: 'Live Saxophonist Foyer Melodies',
-                important: 'Maintain smooth flow at registration desk & photo booth.'
+                important: 'Maintain smooth guest flow at registration, photo booth, and cocktail bars.'
             },
             {
                 id: 'rcp-6',
@@ -716,15 +741,15 @@
                 title: 'Ballroom Door Open & Guests Seated',
                 todo: [
                     'Ballroom 3 doors opened for guests',
-                    'Background sound effect playing inside ballroom',
-                    'Usherettes guiding guests to designated tables',
-                    'Couple logo aired on main screen'
+                    'Sound effect playing inside ballroom',
+                    'Usherettes guide guests to assigned tables',
+                    '#CynNavTiedInLove wedding logo aired on main screen'
                 ],
-                responsible: ['Coordinator Team', 'Usherettes', 'Starlight Entertainment'],
-                people: ['MC', 'Groom Father', 'Groom Siblings', 'Bride Parents', 'Bride Siblings', 'Usherettes'],
-                song: 'Ballroom Ambient Welcoming Audio',
+                responsible: ['Coordinator Team', 'Starlight Entertainment', 'Usherettes'],
+                people: ['MC', 'Groom\'s Father', 'Groom\'s Siblings', 'Bride\'s Parents', 'Bride\'s Siblings', 'Usherettes'],
+                song: 'Ballroom Welcoming Sound Effects (Audio Playback)',
                 led: '#CynNavTiedInLove Wedding Logo Displayed On Screen',
-                important: 'Verify VIP maintable seating arrangement.'
+                important: 'Usherettes ensure VIP maintable seating arrangement is strictly verified.'
             },
             {
                 id: 'rcp-7',
@@ -733,14 +758,15 @@
                 endMins: 1185,
                 title: 'Hospitality Announcement & Abimaniac Set 1',
                 todo: [
-                    'MC hospitality announcement made',
-                    'Performance by Abimaniac Instrumental (1st Set) inside ballroom',
-                    'All guests seated cleanly'
+                    'Hospitality announcement delivered by MC',
+                    'Performance by ABIMANIAC Instrumental (1st Set) inside ballroom',
+                    'Ensure all guests are seated comfortably'
                 ],
-                responsible: ['Coordinator Team', 'Starlight Entertainment'],
-                people: ['MC', 'Abimaniac Band', 'Family Members'],
-                song: 'Abimaniac Instrumental Set 1',
-                important: 'Ensure protocol team is ready for Royalties arrival.'
+                responsible: ['Coordinator Team', 'Starlight Entertainment', 'MC'],
+                people: ['MC', 'Groom\'s Father', 'Groom\'s Siblings', 'Bride\'s Parents', 'Bride\'s Siblings', 'Usherettes', 'Abimaniac'],
+                song: 'ABIMANIAC Instrumental Performance (Set 1)',
+                led: '#CynNavTiedInLove Logo On Screen',
+                important: 'Protocol team standby for Royalties arrival.'
             },
             {
                 id: 'rcp-8',
@@ -749,235 +775,238 @@
                 endMins: 1200,
                 title: 'Arrival of Bride & Groom at Function Room 1',
                 todo: [
-                    'Bride & Groom arrived at venue',
-                    'Escorted to Function Room 1 for touch-ups & briefing'
+                    'Bride & Groom arrive at venue',
+                    'Proceed directly to Function Room 1 for touch-ups & briefing'
                 ],
-                responsible: ['Coordinator Team', 'Protocol Team'],
+                responsible: ['Coordinator Team'],
                 people: ['Bride (Kavya)', 'Groom (Navinsamy)'],
-                important: 'Prepare couple for Royalties greeting in Holding Room.'
+                important: 'Keep couple ready for royal greeting in Holding Room.'
             },
             {
                 id: 'rcp-9',
                 time: '08:00 PM',
                 startMins: 1200,
                 endMins: 1205,
-                title: 'Arrival of Royalties (DYTM Tuanku Syed Faizuddin & Tuanku Dr Hajah Lailatul Shareen)',
+                title: 'Arrival of Royalties (Proceed to Holding Room)',
                 todo: [
-                    'DYTM Tuanku Syed Faizuddin Putra Ibni Tuanku Syed Sirajuddin Jamalullail & DYTM Tuanku Dr Hajah Lailatul Shareen Akashah Khalil arrived',
-                    'Escorted to Holding Room',
-                    'Parents & Couple assembled at Holding Room'
+                    'Arrival of DYTM TUANKU SYED FAIZUDDIN PUTRA IBNI TUANKU SYED SIRAJUDDIN JAMALULLAIL & DYTM TUANKU DR HAJAH LAILATUL SHAREEN AKASHAH KHALIL',
+                    'Royalties escorted to Holding Room',
+                    'Parents, Siblings & Couple assembled in Holding Room'
                 ],
-                responsible: ['Protocol Team', 'Coordinator Team'],
-                people: ['Royalties', 'Bride', 'Groom', 'Groom Parents', 'Groom Siblings', 'Bride Parents', 'Bride Siblings'],
-                important: 'Strict royal protocol must be maintained.'
+                responsible: ['Coordinator Team', 'Protocol Team'],
+                people: ['Royalties', 'Bride', 'Groom', 'Groom\'s Parents', 'Groom\'s Siblings', 'Bride\'s Parents', 'Bride\'s Siblings', 'Protocol'],
+                important: 'Maintain strict royal protocol adherence.'
             },
             {
                 id: 'rcp-10',
-                time: '08:05 PM',
+                time: '08:05 PM (10 mins)',
                 startMins: 1205,
                 endMins: 1215,
                 title: 'Royalties Introduction, Gift Presentation & Photo Session',
                 todo: [
                     'Bride & Groom introduced to Royalties in Holding Room',
-                    'Gift presentation to Royalties completed',
-                    'Photo session with Royalties, Parents, and Siblings at Foyer Area'
+                    'Gift presentation to Royalties in Holding Room',
+                    'Photo Session of Bride & Groom with Royalties, Parents, Groom\'s & Bride\'s Siblings at Foyer Area',
+                    'Follow strict photo session sequence as per attachment'
                 ],
-                responsible: ['Coordinator Team', 'Protocol Team', 'Andrewkoe Studio'],
-                people: ['Royalties', 'Bride', 'Groom', 'Parents', 'Siblings', 'Andrewkoe Studio', 'SCW Filmmakers'],
-                important: 'Follow official photo session sequence.'
+                responsible: ['Coordinator Team', 'Protocol Team', 'Photographer/Videographer'],
+                people: ['Royalties', 'Bride', 'Groom', 'Groom\'s Parents', 'Bride\'s Parents', 'Groom\'s Siblings', 'Bride\'s Siblings', 'ANDREWKOE STUDIO', 'SCW FILMMAKERS', 'Protocol'],
+                important: 'Follow designated photo sequence at Foyer area.'
             },
             {
                 id: 'rcp-11',
-                time: '08:15 PM',
+                time: '08:15 PM (10 mins)',
                 startMins: 1215,
                 endMins: 1225,
                 title: 'Royalties Grand Entrance & Opening Dance',
                 todo: [
-                    'MC announcement (All guests stand)',
-                    'Arrival of Royalties accompanied by Parents to MAINTABLE',
+                    'MC announcement (All Guests to Stand)',
+                    'Arrival of Royalties accompanied with Groom\'s & Bride\'s Parents proceed to MAINTABLE',
                     'Rhythm Up Dancers accompany entrance of Royalties',
                     'Opening Dance by Rhythm Up Dancers'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team', 'Protocol Team'],
-                people: ['MC', 'Royalties', 'Groom Parents', 'Bride Parents', 'Rhythm Up Dancers', 'Photographer', 'Videographer'],
-                song: 'Royal Entrance Fanfare & Opening Dance Track',
-                important: 'Cue Rhythm Up Dancers as Royalties enter main ballroom.'
+                people: ['MC', 'Royalties', 'Groom\'s Parents', 'Bride\'s Parents', 'ANDREWKOE STUDIO', 'SCW FILMMAKERS', 'Protocol'],
+                song: 'Royal Entrance Fanfare & Rhythm Up Opening Dance Track',
+                important: 'Rhythm Up Dancers start opening dance as Royalties reach Maintable.'
             },
             {
                 id: 'rcp-12',
-                time: '08:25 PM',
+                time: '08:25 PM (5 mins)',
                 startMins: 1225,
                 endMins: 1230,
                 title: 'Grand Entrance of Bride & Groom',
                 todo: [
-                    'MC announcement of Bride & Groom arrival at main entrance',
-                    'Couple walk towards mainstage area',
-                    'Bride & Groom take standing position on mainstage'
+                    'MC announce Arrival of Bride & Groom at main entrance',
+                    'Entrance of Bride & Groom',
+                    'Bride & Groom walk down central aisle towards mainstage area',
+                    'Bride & Groom take standing position on mainstage area'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'Bride (Kavya)', 'Groom (Navinsamy)'],
-                song: 'Grand Bridal Entrance Song',
-                important: 'Spotlight on couple walking down central aisle.'
+                song: 'Grand Bridal Entrance Track (Audio Playback)',
+                important: 'Spotlights focused on couple aisle walk.'
             },
             {
                 id: 'rcp-13',
-                time: '08:30 PM',
+                time: '08:30 PM (10 mins)',
                 startMins: 1230,
                 endMins: 1240,
-                title: 'Cake Cutting, Toast & Couple Speech',
+                title: 'Cake Cutting, Toast & Couple Speeches',
                 todo: [
-                    'Welcoming speech by MC',
-                    'Cake Cutting & Toast Ceremony accompanied by song "SUGAR"',
-                    'Bride & Groom Speech delivered',
-                    'Couple escorted from Mainstage to Maintable with song "REWRITE THE STARS"'
+                    'Welcoming speech delivered by MC',
+                    'MC invites Bride & Groom for CAKE CUTTING & TOAST CEREMONY',
+                    'Cake Cutting & Toast Song "SUGAR" accompanied by AUDIO PLAYBACK',
+                    'MC invites Bride & Groom for SPEECH',
+                    'MC invites Bride & Groom to MAINTABLE',
+                    'Mainstage to Maintable Song "REWRITE THE STARS" (Instrumental) accompanied by AUDIO PLAYBACK'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
-                people: ['MC', 'Bride', 'Groom', 'Andrewkoe Studio', 'SCW Filmmakers'],
-                song: 'Cake Cutting: "SUGAR" | Walk to Maintable: "REWRITE THE STARS"',
-                important: 'Ensure champagne/toast glasses are pre-poured at cake table.'
+                people: ['MC', 'Bride', 'Groom', 'ANDREWKOE STUDIO', 'SCW FILMMAKERS'],
+                song: 'Cake Cutting: "SUGAR" | Walk to Maintable: "REWRITE THE STARS" (Instrumental)',
+                important: 'AUDIO CUE: Play "SUGAR" for Cake Cutting & "REWRITE THE STARS" for walk to Maintable!'
             },
             {
                 id: 'rcp-14',
-                time: '08:40 PM',
+                time: '08:40 PM (30 mins)',
                 startMins: 1240,
                 endMins: 1270,
                 title: 'Dinner Service, Open Bar & Abimaniac Performance',
                 todo: [
-                    'MC announce Dinner is Served & Open Bar active',
-                    'Performance by Abimaniac instrumental during dinner'
+                    'MC announce Dinner is Served',
+                    'OPEN BAR active',
+                    'MC announce Performance by ABIMANIAC Live'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'Abimaniac', 'Catering Team'],
-                song: 'Abimaniac Dinner Set',
-                important: 'Ensure main table service is prioritized.'
+                song: 'ABIMANIAC Live Dinner Performance Set',
+                important: 'Catering priority for Royalties & Maintable.'
             },
             {
                 id: 'rcp-15',
-                time: '09:10 PM',
+                time: '09:10 PM (10 mins)',
                 startMins: 1270,
                 endMins: 1280,
-                title: 'Engagement & Wedding Video/Photo Montages',
+                title: 'Video & Photo Montages',
                 todo: [
                     'MC announce Video Montage "ENGAGEMENT"',
-                    'Photo Montage "WEDDING" screened'
+                    'Screening Photo Montage "WEDDING"'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
-                people: ['MC', 'SCW Filmmakers', 'Technical Team'],
-                led: 'Engagement Video & Wedding Photo Montage',
-                important: 'Dim ballroom lights during montage screening.'
+                people: ['MC', 'Abimaniac', 'Technical AV Team'],
+                led: 'Video Montage "ENGAGEMENT" & Photo Montage "WEDDING"',
+                important: 'Dim ballroom lights during video presentation.'
             },
             {
                 id: 'rcp-16',
-                time: '09:20 PM',
+                time: '09:20 PM (10 mins)',
                 startMins: 1280,
                 endMins: 1290,
-                title: 'Dance Performance (Rhythm Up & Family Dance)',
+                title: 'Dance Performances (Rhythm Up & Family Dance)',
                 todo: [
-                    'Dance performance 2nd set by Rhythm Up Dancers',
-                    'Dance performance by Family Dance Group'
+                    'MC announce Dance Performance (2nd Set) "Rhythm Up Dancers" (Audio Playback)',
+                    'MC announce Dance Performance by "Family Dance" (Audio Playback)'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'Rhythm Up Dancers', 'Family Dancers'],
-                song: 'Audio Playback Dance Tracks',
-                important: 'Clear stage area for dance groups.'
+                song: 'Rhythm Up 2nd Set Audio Playback & Family Dance Audio Playback',
+                important: 'Keep stage clear for dance routines.'
             },
             {
                 id: 'rcp-17',
-                time: '09:30 PM',
+                time: '09:30 PM (5 mins)',
                 startMins: 1290,
                 endMins: 1295,
                 title: 'Speech by Mr Sathiarajan & Ms Umadevi',
                 todo: [
-                    'MC invites Mr Sathiarajan & Ms Umadevi for speech',
-                    'Speech completed on stage'
+                    'MC invites Mr Sathiarajan & Ms Umadevi for Speech',
+                    'Speeches delivered on stage'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'Mr Sathiyarajan', 'Ms Umadevi'],
-                important: 'Stage wireless mic ready.'
+                important: 'Ensure wireless mic is handed over.'
             },
             {
                 id: 'rcp-18',
-                time: '09:35 PM',
+                time: '09:35 PM (5 mins)',
                 startMins: 1295,
                 endMins: 1300,
                 title: 'Dance Performance by "Boys Dance"',
                 todo: [
-                    'MC announce Boys Dance Performance',
-                    'Boys Dance routine executed on stage'
+                    'MC announce Dance Performance by "Boys Dance" (Audio Playback)'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'Boys Dancers'],
-                song: 'Boys Dance Audio Playback',
-                important: 'High energy lighting beat.'
+                song: 'Boys Dance Performance Audio Playback',
+                important: 'High energy stage lighting.'
             },
             {
                 id: 'rcp-19',
-                time: '09:40 PM',
+                time: '09:40 PM (6 mins)',
                 startMins: 1300,
                 endMins: 1306,
                 title: 'Speech by YBHG Dato Harikrishnan & Mr Veerasamy Harikrishnan',
                 todo: [
-                    'MC invites YBHG Dato Harikrishnan N Veerasamy & Mr Veerasamy Harikrishnan for speech',
-                    'Speech completed on stage'
+                    'MC invites YBHG Dato Harikrishnan N Veerasamy & Mr Veerasamy Harikrishnan for Speech'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
                 people: ['MC', 'YBHG Dato Harikrishnan N Veerasamy', 'Mr Veerasamy Harikrishnan'],
-                important: 'Wireless mics checked.'
+                important: 'Check stage microphone levels.'
             },
             {
                 id: 'rcp-20',
-                time: '09:46 PM',
+                time: '09:46 PM (5 mins)',
                 startMins: 1306,
                 endMins: 1311,
-                title: 'Dance Performance 3rd Set (Rhythm Up Dancers)',
+                title: 'Dance Performance (3rd Set) Rhythm Up Dancers',
                 todo: [
-                    '3rd set dance performance by Rhythm Up Dancers'
+                    'Dance Performance (3rd Set) "Rhythm Up Dancers" (Audio Playback)'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
-                people: ['MC', 'Rhythm Up Dancers'],
+                people: ['Rhythm Up Dancers'],
                 song: 'Rhythm Up 3rd Set Audio Playback',
                 important: 'Prepare couple for exit walk.'
             },
             {
                 id: 'rcp-21',
-                time: '09:51 PM',
+                time: '09:51 PM (5 mins)',
                 startMins: 1311,
                 endMins: 1316,
                 title: 'Bride & Groom Exit to Main Entrance',
                 todo: [
                     'MC invites Bride & Groom to Main Entrance (Exit)',
-                    'Couple walk from Maintable to Exit'
+                    'Maintable to Main Entrance (Exit) song accompanied by AUDIO PLAYBACK'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team'],
-                people: ['MC', 'Bride', 'Groom'],
-                song: 'Maintable to Exit Song',
-                important: 'Spotlight guiding exit path.'
+                people: ['MC', 'Bride (Kavya)', 'Groom (Navinsamy)'],
+                song: 'Maintable to Main Entrance Exit Song (Audio Playback)',
+                important: 'Spotlights guide aisle exit walk.'
             },
             {
                 id: 'rcp-22',
-                time: '09:56 PM',
+                time: '09:56 PM ONWARDS',
                 startMins: 1316,
-                endMins: 1380,
-                title: 'Departure of Royalties, Photo Session & Open Dance Floor',
+                endMins: 1440,
+                title: 'Departure of Royalties, Open Dance Floor & Photo Session',
                 todo: [
-                    'Departure of Royalties to Main Entrance accompanied by Parents',
-                    'MC closing speech delivered',
-                    'Abimaniac Finale performance',
-                    'Open Dance Floor announced with DJ Dass spinning',
-                    'Guests invited to dance floor area',
-                    'Photo session ceremony with Bride & Groom outside ballroom area'
+                    'MC announce Departure of Royalties to Main Entrance accompanied by Groom\'s & Bride\'s Parents',
+                    'MC announce Photo Session with Bride & Groom after event',
+                    'MC Closing Speech',
+                    'ABIMANIAC (Finale Performance Instrumental)',
+                    'MC announce OPEN DANCE FLOOR - DJ DASS TO SPIN',
+                    'MC invites all guests to join and be at Dance Floor Area',
+                    'Photo Session Ceremony: Bride & Groom remain outside ballroom area'
                 ],
                 responsible: ['MC', 'Starlight Entertainment', 'Coordinator Team', 'Protocol Team'],
-                people: ['MC', 'Royalties', 'Parents', 'Abimaniac', 'DJ Dass', 'Photographer', 'Videographer', 'Guests'],
-                song: 'DJ Dass Party Spin & Abimaniac Finale Track',
-                important: 'Ensure smooth photo queue outside ballroom.'
+                people: ['MC', 'Royalties', 'Groom\'s Parents', 'Bride\'s Parents', 'Protocol Team', 'Abimaniac', 'ANDREWKOE STUDIO', 'SCW FILMMAKERS', 'DJ DASS', 'Guests'],
+                song: 'Departure Instrumental (Abimaniac) & DJ DASS Party Spin',
+                important: 'Couple remains outside ballroom for guest photo session while DJ DASS spins on dance floor.'
             }
         ];
 
-        // LOCAL STORAGE STATE KEYS
-        var STORAGE_KEY_TASKS = 'nk_wedding_tasks_v2';
-        var STORAGE_KEY_CAR_STATUS = 'nk_wedding_car_status_v2';
-        var STORAGE_KEY_BRANCH = 'nk_wedding_branch_v2';
+        var STORAGE_KEY_TASKS = 'nk_wedding_tasks_v3';
+        var STORAGE_KEY_CAR_STATUS = 'nk_wedding_car_status_v3';
+        var STORAGE_KEY_BRANCH = 'nk_wedding_branch_v3';
         
         var savedTasks = JSON.parse(localStorage.getItem(STORAGE_KEY_TASKS) || '{}');
         var savedCarStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_CAR_STATUS) || '{}');
@@ -1033,12 +1062,12 @@
             var banner = document.getElementById('branch-info-banner');
 
             if (branch === 'TEMPLE') {
-                if (templeBtn) templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
-                if (receptionBtn) receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
+                if (templeBtn) templeBtn.className = "px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
+                if (receptionBtn) receptionBtn.className = "px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
                 if (banner) banner.innerHTML = "📅 23 AUGUST 2026 | 📍 Jalan Baru Muniswarar Temple, Perai, Penang";
             } else {
-                if (receptionBtn) receptionBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
-                if (templeBtn) templeBtn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
+                if (receptionBtn) receptionBtn.className = "px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-amber-600 text-white border border-amber-700";
+                if (templeBtn) templeBtn.className = "px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition font-cinzel shadow-xs bg-white text-amber-900 border border-amber-400 hover:bg-amber-50";
                 if (banner) banner.innerHTML = "📅 24 AUGUST 2026 | 📍 Ballroom 3, PICCA Convention Centre (#CynNavTiedInLove)";
             }
             renderAllViews();
@@ -1052,10 +1081,10 @@
                 var view = document.getElementById('tab-view-' + t.toLowerCase());
                 if (btn && view) {
                     if (t === tab) {
-                        btn.className = "active-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                        btn.className = "active-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1";
                         view.classList.remove('hidden');
                     } else {
-                        btn.className = "inactive-tab flex-1 py-2.5 px-1 sm:px-3 rounded-xl font-cinzel font-bold text-xs sm:text-sm tracking-wider transition text-center flex items-center justify-center gap-1";
+                        btn.className = "inactive-tab flex-1 py-1.5 px-1 sm:px-3 rounded-lg font-cinzel font-bold text-[10px] sm:text-xs tracking-wider transition text-center flex items-center justify-center gap-1";
                         view.classList.add('hidden');
                     }
                 }
@@ -1084,42 +1113,42 @@
         function renderAgendaView() {
             var currentMins = getCurrentMinutes();
             var activeEvents = getEventsList();
-            var html = '<div class="space-y-3">';
+            var html = '<div class="space-y-2.5">';
 
             activeEvents.forEach(function(evt) {
                 var prog = getEventProgress(evt);
                 var isNow = currentMins >= evt.startMins && currentMins <= evt.endMins;
                 
                 var statusBadge = prog.isAllDone 
-                    ? '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">✅ DONE</span>'
+                    ? '<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-full">✅ DONE</span>'
                     : isNow 
-                    ? '<span class="px-3 py-1 bg-amber-400 text-slate-900 text-xs font-bold rounded-full animate-pulse">🟡 NOW</span>'
-                    : '<span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">⬜ PENDING</span>';
+                    ? '<span class="px-2 py-0.5 bg-amber-400 text-slate-900 text-[10px] font-bold rounded-full animate-pulse">🟡 NOW</span>'
+                    : '<span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-semibold rounded-full">⬜ PENDING</span>';
 
                 var cardBg = evt.isTalli 
                     ? 'gold-glow-card' 
                     : isNow 
-                    ? 'bg-amber-50/70 gold-border' 
+                    ? 'bg-amber-50/80 gold-border' 
                     : prog.isAllDone 
                     ? 'bg-emerald-50/40 border border-emerald-200' 
                     : 'bg-white border border-slate-200';
 
                 html += 
-                    '<div class="p-4 rounded-2xl transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs ' + cardBg + '">' +
-                        '<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 flex-1 min-w-0">' +
-                            '<div class="inline-flex items-center justify-center bg-white px-3 py-1 rounded-lg gold-border font-mono font-bold text-amber-900 text-xs sm:text-sm shrink-0 w-fit whitespace-nowrap shadow-2xs">' +
+                    '<div class="p-3 sm:p-3.5 rounded-xl transition flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs ' + cardBg + '">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 flex-1 min-w-0">' +
+                            '<div class="inline-flex items-center justify-center bg-white px-2.5 py-1 rounded-lg gold-border font-mono font-bold text-amber-900 text-xs shrink-0 w-fit whitespace-nowrap shadow-2xs">' +
                                 '⏰ ' + evt.time +
                             '</div>' +
                             '<div class="flex-1 min-w-0">' +
-                                '<div class="font-cinzel font-bold text-slate-900 text-base sm:text-lg break-words">' + 
+                                '<div class="font-cinzel font-bold text-slate-900 text-xs sm:text-sm break-words">' + 
                                     (evt.isTalli ? '💍 ' : '') + evt.title + 
                                 '</div>' +
-                                '<div class="text-xs text-slate-500 mt-0.5">' +
+                                '<div class="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">' +
                                     'Tasks: <span class="font-bold text-slate-700">' + prog.done + ' / ' + prog.total + ' Completed</span>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                        '<div class="flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">' +
+                        '<div class="flex items-center justify-between sm:justify-end gap-2 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">' +
                             statusBadge +
                         '</div>' +
                     '</div>';
@@ -1132,19 +1161,19 @@
 
         function renderDetailsView() {
             var activeEvents = getEventsList();
-            var html = '<div class="space-y-6">';
+            var html = '<div class="space-y-4">';
 
             activeEvents.forEach(function(evt) {
                 var todoItemsHtml = evt.todo ? evt.todo.map(function(item) {
-                    return '<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700"><span class="text-amber-500">▪</span><span>' + item + '</span></li>';
+                    return '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span class="text-amber-600 font-bold">▪</span><span>' + item + '</span></li>';
                 }).join('') : '';
 
                 var responsibleHtml = evt.responsible ? evt.responsible.map(function(role) {
-                    return '<span class="px-2.5 py-1 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold rounded-md">👤 ' + role + '</span>';
+                    return '<span class="px-2 py-0.5 bg-amber-50 border border-amber-200 text-amber-900 text-[10px] sm:text-[11px] font-bold rounded-md">👑 ' + role + '</span>';
                 }).join('') : '';
 
                 var peopleHtml = evt.people ? evt.people.map(function(person) {
-                    return '<span class="px-2.5 py-1 bg-slate-100 text-slate-800 text-xs font-medium rounded-md">👥 ' + person + '</span>';
+                    return '<span class="px-2 py-0.5 bg-slate-100 text-slate-800 text-[10px] sm:text-[11px] font-medium rounded-md">👥 ' + person + '</span>';
                 }).join('') : '';
 
                 var walkingHtml = evt.walkingList ? evt.walkingList.map(function(step) {
@@ -1154,44 +1183,39 @@
                 var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
 
                 html += 
-                    '<div class="p-5 rounded-2xl space-y-4 ' + cardBg + '">' +
-                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-3 gap-2">' +
-                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
-                            '<h3 class="font-cinzel font-bold text-slate-900 text-lg sm:text-xl flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                    '<div class="p-3.5 sm:p-4 rounded-2xl space-y-3 ' + cardBg + '">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-2 gap-1.5">' +
+                            '<span class="px-2.5 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-sm sm:text-base flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
                         '</div>' +
 
-                        '<!-- TO DO LIST -->' +
                         (todoItemsHtml ? 
-                            '<div class="space-y-1.5">' +
-                                '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">📋 TO DO</div>' +
+                            '<div class="space-y-1">' +
+                                '<div class="text-[10px] font-bold text-amber-900 uppercase tracking-wider">📋 RESPONSIBILITIES & ACTION ITEMS</div>' +
                                 '<ul class="space-y-1 pl-1">' + todoItemsHtml + '</ul>' +
                             '</div>' : '') +
 
-                        '<!-- RESPONSIBLE LEADERS -->' +
                         (responsibleHtml ? 
-                            '<div class="space-y-1.5 pt-2 border-t border-slate-100">' +
-                                '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">👑 RESPONSIBLE LEADERS (PIC)</div>' +
-                                '<div class="flex flex-wrap gap-1.5">' + responsibleHtml + '</div>' +
+                            '<div class="space-y-1 pt-1 border-t border-slate-100">' +
+                                '<div class="text-[10px] font-bold text-amber-900 uppercase tracking-wider">👑 RESPONSIBLE TEAMS & REMARKS</div>' +
+                                '<div class="flex flex-wrap gap-1">' + responsibleHtml + '</div>' +
                             '</div>' : '') +
 
-                        '<!-- PEOPLE INVOLVED -->' +
                         (peopleHtml ? 
-                            '<div class="space-y-1.5">' +
-                                '<div class="text-xs font-bold text-slate-500 uppercase tracking-wider">👥 PEOPLE INVOLVED</div>' +
-                                '<div class="flex flex-wrap gap-1.5">' + peopleHtml + '</div>' +
+                            '<div class="space-y-1">' +
+                                '<div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">👥 ATTENDED BY / VENDORS</div>' +
+                                '<div class="flex flex-wrap gap-1">' + peopleHtml + '</div>' +
                             '</div>' : '') +
 
-                        '<!-- WALKING LIST / PROCESSION -->' +
                         (walkingHtml ? 
-                            '<div class="space-y-1.5 bg-amber-50/50 p-3 rounded-xl border border-amber-200/60">' +
-                                '<div class="text-xs font-bold text-amber-900 uppercase tracking-wider">🚶 WALKING LIST / PROCESSION ORDER</div>' +
-                                '<ul class="space-y-1 pl-1 list-none">' + walkingHtml + '</ul>' +
+                            '<div class="space-y-1 bg-amber-50/60 p-2 rounded-xl border border-amber-200/60">' +
+                                '<div class="text-[10px] font-bold text-amber-900 uppercase tracking-wider">🚶 PROCESSION / WALKING ORDER</div>' +
+                                '<ul class="space-y-0.5 pl-1 list-none">' + walkingHtml + '</ul>' +
                             '</div>' : '') +
 
-                        '<!-- SONG / LED / IMPORTANT INSTRUCTIONS -->' +
-                        (evt.song ? '<div class="text-xs text-slate-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200 font-medium">🎵 <b>SONG:</b> ' + evt.song + '</div>' : '') +
-                        (evt.led ? '<div class="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 font-medium">📺 <b>LED:</b> ' + evt.led + '</div>' : '') +
-                        (evt.important ? '<div class="text-xs text-amber-950 bg-amber-100/80 p-2.5 rounded-lg border border-amber-300 font-semibold">⚠️ <b>IMPORTANT:</b> ' + evt.important + '</div>' : '') +
+                        (evt.song ? '<div class="text-xs text-slate-800 bg-amber-50 p-2 rounded-lg border border-amber-200 font-medium">🎵 <b>SONG / AUDIO PLAYBACK:</b> ' + evt.song + '</div>' : '') +
+                        (evt.led ? '<div class="text-xs text-slate-800 bg-slate-50 p-2 rounded-lg border border-slate-200 font-medium">📺 <b>SCREEN / LED DISPLAY:</b> ' + evt.led + '</div>' : '') +
+                        (evt.important ? '<div class="text-xs text-amber-950 bg-amber-100/90 p-2 rounded-lg border border-amber-300 font-semibold">⚠️ <b>REMARKS / PROTOCOL:</b> ' + evt.important + '</div>' : '') +
                     '</div>';
             });
 
@@ -1205,15 +1229,17 @@
 
             if (currentBranch === 'RECEPTION') {
                 html = 
-                    '<div class="bg-white p-6 rounded-2xl gold-border shadow-xs space-y-3 text-center">' +
-                        '<div class="text-3xl">🍸</div>' +
-                        '<h2 class="font-cinzel font-bold text-slate-900 text-lg sm:text-xl">RECEPTION TRANSPORTATION PROTOCOL</h2>' +
+                    '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-2 text-center">' +
+                        '<div class="text-2xl">🍸</div>' +
+                        '<h2 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg">RECEPTION VENUE & ARRIVAL PROTOCOL</h2>' +
                         '<p class="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">' +
-                            'Car convoy sequence applies exclusively to the <b>Temple Wedding (23 Aug)</b>. For the Reception at PICCA Convention Centre (24 Aug), Bride & Groom and Royalties will arrive directly at designated entrance suites.' +
+                            '<b>Venue:</b> Ballroom 3, PICCA Convention Centre (#CynNavTiedInLove)<br>' +
+                            '<b>Bride & Groom Arrival:</b> Proceed directly to <b>Function Room 1</b> by 07:45 PM.<br>' +
+                            '<b>Royalties Arrival:</b> DYTM Tuanku Syed Faizuddin Putra & DYTM Tuanku Dr Hajah Lailatul Shareen arrive at 08:00 PM and proceed to <b>Holding Room</b>.' +
                         '</p>' +
                         '<div class="pt-2 flex justify-center">' +
-                            '<button onclick="switchBranch(\'TEMPLE\')" class="px-4 py-2 bg-amber-600 text-white font-bold rounded-xl text-xs font-cinzel shadow-xs hover:bg-amber-700 transition">' +
-                                '🛕 VIEW TEMPLE CAR CONVOY LIST' +
+                            '<button onclick="window.switchBranch(\'TEMPLE\')" class="px-3.5 py-1.5 bg-amber-600 text-white font-bold rounded-xl text-xs font-cinzel shadow-xs hover:bg-amber-700 transition">' +
+                                '🛕 VIEW TEMPLE CAR CONVOY DASHBOARD' +
                             '</button>' +
                         '</div>' +
                     '</div>';
@@ -1223,16 +1249,15 @@
             }
 
             html = 
-                '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-2 text-center">' +
-                    '<h2 class="font-cinzel font-black text-slate-900 text-lg sm:text-xl">🚗 WEDDING CAR CONVOY & DRIVER DASHBOARD</h2>' +
-                    '<p class="text-xs text-slate-500">Real-time tracking of assigned drivers (Saccin, Victor, Shankar, Michael, Senthil, Mano Uncle Team), license plates, and exact passenger allocations.</p>' +
+                '<div class="bg-white p-3.5 rounded-2xl gold-border shadow-xs space-y-1 text-center">' +
+                    '<h2 class="font-cinzel font-black text-slate-900 text-base">🚗 WEDDING CAR CONVOY & DRIVER DASHBOARD</h2>' +
+                    '<p class="text-[10px] text-slate-500">Real-time tracking of assigned drivers, license plates, and passenger allocations.</p>' +
                 '</div>' +
 
-                '<!-- CONVOY POSITIONING SUMMARY CARD -->' +
-                '<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">' +
-                    '<div class="bg-amber-50/70 p-4 rounded-2xl gold-border space-y-2">' +
-                        '<div class="font-cinzel font-bold text-amber-900 text-sm border-b border-amber-200 pb-1">🚘 GROOM CONVOY ORDER (HOUSE ➔ HALL)</div>' +
-                        '<ol class="text-xs space-y-1 font-semibold text-slate-800">' +
+                '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">' +
+                    '<div class="bg-amber-50/80 p-3 rounded-xl gold-border space-y-1">' +
+                        '<div class="font-cinzel font-bold text-amber-900 text-xs border-b border-amber-200 pb-1">🚘 GROOM CONVOY ORDER (HOUSE ➔ HALL)</div>' +
+                        '<ol class="text-[11px] space-y-0.5 font-semibold text-slate-800">' +
                             '<li>1. <b>Porsche (SAB 1111 V)</b> — Driver: Saccin</li>' +
                             '<li>2. <b>Denza (VMP 1111)</b> — Driver: Victor</li>' +
                             '<li>3. <b>Toyota Alphard (VHR 1111)</b> — Driver: Mano Uncle Team</li>' +
@@ -1240,9 +1265,9 @@
                         '</ol>' +
                     '</div>' +
 
-                    '<div class="bg-amber-50/70 p-4 rounded-2xl gold-border space-y-2">' +
-                        '<div class="font-cinzel font-bold text-amber-900 text-sm border-b border-amber-200 pb-1">🚘 BRIDE CONVOY ORDER (HOTEL ➔ HALL)</div>' +
-                        '<ol class="text-xs space-y-1 font-semibold text-slate-800">' +
+                    '<div class="bg-amber-50/80 p-3 rounded-xl gold-border space-y-1">' +
+                        '<div class="font-cinzel font-bold text-amber-900 text-xs border-b border-amber-200 pb-1">🚘 BRIDE CONVOY ORDER (HOTEL ➔ HALL)</div>' +
+                        '<ol class="text-[11px] space-y-0.5 font-semibold text-slate-800">' +
                             '<li>1. <b>BMW i7 (SAB 1111 H)</b> — Driver: Shankar</li>' +
                             '<li>2. <b>Toyota Vellfire (PLR 1111)</b> — Driver: Michael</li>' +
                             '<li>3. <b>Mano Uncle Van 9-Seater (VLV 3181)</b> — Departs Early</li>' +
@@ -1250,7 +1275,7 @@
                     '</div>' +
                 '</div>' +
 
-                '<div class="space-y-4 pt-4">';
+                '<div class="space-y-3 pt-3">';
 
             CAR_CONVOY_LIST.forEach(function(car) {
                 var status = getCarStatus(car.id);
@@ -1263,72 +1288,72 @@
                 };
 
                 var passengersHtml = car.passengers.map(function(p) {
-                    return '<span class="px-2 py-0.5 bg-slate-100 text-slate-800 text-xs font-medium rounded border border-slate-200">' + p + '</span>';
+                    return '<span class="px-2 py-0.5 bg-slate-100 text-slate-800 text-[10px] font-medium rounded border border-slate-200">' + p + '</span>';
                 }).join(' ');
 
                 html += 
-                    '<div class="p-5 bg-white rounded-2xl gold-border shadow-xs space-y-3">' +
-                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-3 gap-2">' +
+                    '<div class="p-3.5 bg-white rounded-2xl gold-border shadow-xs space-y-2">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-1.5 gap-1">' +
                             '<div>' +
-                                '<span class="px-2.5 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md">' + car.plate + '</span>' +
-                                '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg inline-block ml-2">' + car.role + '</h3>' +
+                                '<span class="px-2 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold text-[11px] rounded">' + car.plate + '</span>' +
+                                '<h3 class="font-cinzel font-bold text-slate-900 text-xs sm:text-sm inline-block ml-2">' + car.role + '</h3>' +
                             '</div>' +
-                            '<span class="px-3 py-1 rounded-full text-xs font-bold border self-start sm:self-auto ' + statusClasses[status] + '">' +
+                            '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold border self-start sm:self-auto ' + statusClasses[status] + '">' +
                                 'STATUS: ' + status +
                             '</span>' +
                         '</div>' +
 
-                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">' +
+                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">' +
                             '<div><b>🚘 Vehicle Model:</b> <span class="text-slate-700 font-medium">' + car.model + '</span></div>' +
                             '<div><b>👨‍✈️ Driver:</b> <span class="text-amber-900 font-bold">' + car.driver + '</span></div>' +
-                            '<div><b>📍 Route & Type:</b> <span class="text-slate-700 font-medium">' + car.route + '</span></div>' +
-                            '<div><b>⏰ Convoy Position:</b> <span class="text-slate-900 font-bold">' + car.position + '</span></div>' +
+                            '<div><b>📍 Route:</b> <span class="text-slate-700 font-medium">' + car.route + '</span></div>' +
+                            '<div><b>⏰ Position:</b> <span class="text-slate-900 font-bold">' + car.position + '</span></div>' +
                         '</div>' +
 
                         '<div class="space-y-1 pt-1 border-t border-slate-100 text-xs">' +
-                            '<div class="font-bold text-slate-500 uppercase tracking-wider">👥 PASSENGER ALLOCATION</div>' +
-                            '<div class="flex flex-wrap gap-1.5">' + passengersHtml + '</div>' +
+                            '<div class="font-bold text-slate-500 uppercase tracking-wider text-[9px]">👥 PASSENGERS</div>' +
+                            '<div class="flex flex-wrap gap-1">' + passengersHtml + '</div>' +
                         '</div>' +
 
-                        '<div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">' +
-                            '<span class="text-xs font-bold text-slate-500 mr-1">CHANGE STATUS:</span>' +
-                            '<button onclick="setCarStatus(\'' + car.id + '\', \'READY\')" class="px-3 py-1 bg-blue-50 text-blue-700 hover:bg-blue-100 font-bold rounded-lg text-xs border border-blue-200 transition">READY</button>' +
-                            '<button onclick="setCarStatus(\'' + car.id + '\', \'DEPARTED\')" class="px-3 py-1 bg-amber-50 text-amber-700 hover:bg-amber-100 font-bold rounded-lg text-xs border border-amber-200 transition">DEPARTED</button>' +
-                            '<button onclick="setCarStatus(\'' + car.id + '\', \'ARRIVED\')" class="px-3 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg text-xs border border-emerald-200 transition">ARRIVED</button>' +
-                            '<button onclick="setCarStatus(\'' + car.id + '\', \'STANDBY\')" class="px-3 py-1 bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold rounded-lg text-xs border border-slate-200 transition">STANDBY</button>' +
+                        '<div class="pt-1 border-t border-slate-100 flex flex-wrap items-center gap-1">' +
+                            '<span class="text-[10px] font-bold text-slate-500 mr-1">STATUS:</span>' +
+                            '<button onclick="window.setCarStatus(\'' + car.id + '\', \'READY\')" class="px-2 py-0.5 bg-blue-50 text-blue-700 font-bold rounded text-[10px] border border-blue-200">READY</button>' +
+                            '<button onclick="window.setCarStatus(\'' + car.id + '\', \'DEPARTED\')" class="px-2 py-0.5 bg-amber-50 text-amber-700 font-bold rounded text-[10px] border border-amber-200">DEPARTED</button>' +
+                            '<button onclick="window.setCarStatus(\'' + car.id + '\', \'ARRIVED\')" class="px-2 py-0.5 bg-emerald-50 text-emerald-700 font-bold rounded text-[10px] border border-emerald-200">ARRIVED</button>' +
+                            '<button onclick="window.setCarStatus(\'' + car.id + '\', \'STANDBY\')" class="px-2 py-0.5 bg-slate-50 text-slate-600 font-bold rounded text-[10px] border border-slate-200">STANDBY</button>' +
                         '</div>' +
                     '</div>';
             });
 
             html += '</div>';
 
-            // SPARE CARS SECTION
+            // SPARE CARS
             html += 
-                '<div class="mt-6 p-5 bg-white rounded-2xl gold-border space-y-3 shadow-xs">' +
-                    '<div class="font-cinzel font-bold text-slate-900 text-base border-b border-amber-200 pb-2">🚗 SPARE VEHICLES</div>' +
-                    '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">' +
+                '<div class="mt-3 p-3 bg-white rounded-2xl gold-border space-y-1.5 shadow-xs">' +
+                    '<div class="font-cinzel font-bold text-slate-900 text-xs border-b border-amber-200 pb-1">🚗 SPARE VEHICLES</div>' +
+                    '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">' +
                         SPARE_CARS.map(function(sc) {
-                            return '<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">' +
+                            return '<div class="p-2 bg-slate-50 rounded-lg border border-slate-200 flex items-center justify-between">' +
                                 '<div><b>' + sc.model + '</b></div>' +
-                                '<span class="px-2 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold rounded text-xs">' + sc.plate + '</span>' +
+                                '<span class="px-2 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold rounded text-[11px]">' + sc.plate + '</span>' +
                             '</div>';
                         }).join('') +
                     '</div>' +
                 '</div>';
 
-            // TEMPLE PARKING ALLOCATION SECTION
+            // TEMPLE PARKING
             html += 
-                '<div class="mt-4 p-5 bg-white rounded-2xl gold-border space-y-3 shadow-xs">' +
-                    '<div class="font-cinzel font-bold text-slate-900 text-base border-b border-amber-200 pb-2 flex items-center justify-between">' +
-                        '<span>🅿️ TEMPLE INSIDE PARKING (8 RESERVED SPOTS)</span>' +
-                        '<span class="text-xs font-sans text-amber-800 bg-amber-100 px-2 py-0.5 rounded">REVERSE PARK REQUIRED</span>' +
+                '<div class="mt-3 p-3 bg-white rounded-2xl gold-border space-y-1.5 shadow-xs">' +
+                    '<div class="font-cinzel font-bold text-slate-900 text-xs border-b border-amber-200 pb-1 flex items-center justify-between">' +
+                        '<span>🅿️ TEMPLE PARKING (8 RESERVED SPOTS)</span>' +
+                        '<span class="text-[9px] font-sans text-amber-800 bg-amber-100 px-2 py-0.5 rounded font-bold">REVERSE PARK REQUIRED</span>' +
                     '</div>' +
-                    '<p class="text-xs text-slate-600">⚠️ <b>IMPORTANT INSTRUCTION:</b> All 6 convoy cars MUST be reverse parked according to convoy order once reached at the temple. The van will be parked elsewhere after drop off.</p>' +
-                    '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 pt-1 text-xs">' +
+                    '<p class="text-[10px] text-slate-600">⚠️ All 6 convoy cars MUST be reverse parked inside temple according to convoy order.</p>' +
+                    '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-0.5 text-xs">' +
                         TEMPLE_PARKING_LIST.map(function(tp) {
-                            return '<div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-200 space-y-1">' +
-                                '<div class="font-bold text-amber-900">Spot #' + tp.spot + ' — ' + tp.model + '</div>' +
-                                '<div class="font-mono text-slate-700 text-[11px] font-bold">' + tp.plate + '</div>' +
+                            return '<div class="p-1.5 bg-amber-50/70 rounded-lg border border-amber-200 space-y-0.5">' +
+                                '<div class="font-bold text-amber-900 text-[10px]">Spot #' + tp.spot + ' — ' + tp.model + '</div>' +
+                                '<div class="font-mono text-slate-700 text-[9px] font-bold">' + tp.plate + '</div>' +
                             '</div>';
                         }).join('') +
                     '</div>' +
@@ -1343,17 +1368,16 @@
             var activeEvents = getEventsList();
 
             var html = 
-                '<!-- SIMPLE TOP PROGRESS SUMMARY -->' +
-                '<div class="bg-white p-5 rounded-2xl gold-border shadow-xs space-y-3 text-center">' +
-                    '<div class="text-xs font-bold text-amber-800 uppercase tracking-widest">' + (currentBranch === 'RECEPTION' ? 'RECEPTION PROGRESS (24 AUG)' : 'TEMPLE WEDDING PROGRESS (23 AUG)') + '</div>' +
-                    '<div class="text-2xl sm:text-3xl font-black font-mono text-slate-900">' + 
+                '<div class="bg-white p-3.5 rounded-2xl gold-border shadow-xs space-y-1.5 text-center">' +
+                    '<div class="text-[10px] font-bold text-amber-800 uppercase tracking-widest">' + (currentBranch === 'RECEPTION' ? 'RECEPTION PROGRESS (24 AUG - PICCA)' : 'TEMPLE WEDDING PROGRESS (23 AUG)') + '</div>' +
+                    '<div class="text-lg sm:text-xl font-black font-mono text-slate-900">' + 
                         metrics.completed + ' / ' + metrics.total + ' TASKS COMPLETED (' + metrics.percent + '%)' + 
                     '</div>' +
-                    '<div class="w-full bg-slate-100 rounded-full h-3.5 overflow-hidden gold-border p-0.5">' +
-                        '<div class="bg-amber-400 h-2.5 rounded-full transition-all duration-500" style="width: ' + metrics.percent + '%"></div>' +
+                    '<div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden gold-border p-0.5">' +
+                        '<div class="bg-amber-400 h-1.5 rounded-full transition-all duration-500" style="width: ' + metrics.percent + '%"></div>' +
                     '</div>' +
                 '</div>' +
-                '<div class="space-y-6 mt-4">';
+                '<div class="space-y-3 mt-3">';
 
             activeEvents.forEach(function(evt) {
                 var cardBg = evt.isTalli ? 'gold-glow-card' : 'bg-white gold-border shadow-xs';
@@ -1363,27 +1387,27 @@
                     var itemBg = done ? 'bg-emerald-50 border-emerald-200 text-emerald-900 line-through font-medium' : 'bg-slate-50 border-slate-200 text-slate-800 font-semibold';
                     var checkedAttr = done ? 'checked' : '';
 
-                    return '<label class="flex items-center gap-3.5 p-3 sm:p-4 rounded-xl transition cursor-pointer border ' + itemBg + '">' +
-                        '<input type="checkbox" ' + checkedAttr + ' onchange="toggleTask(\'' + evt.id + '\', ' + idx + ')" class="large-checkbox">' +
-                        '<span class="text-sm sm:text-base flex-1">' + taskText + '</span>' +
-                        (done ? '<span class="text-xs font-bold text-emerald-600 no-underline whitespace-nowrap">✅ DONE</span>' : '') +
+                    return '<label class="flex items-start gap-2.5 p-2 sm:p-2.5 rounded-xl transition cursor-pointer border ' + itemBg + '">' +
+                        '<input type="checkbox" ' + checkedAttr + ' onchange="window.toggleTask(\'' + evt.id + '\', ' + idx + ')" class="large-checkbox shrink-0 mt-0.5">' +
+                        '<span class="text-xs flex-1 leading-snug">' + taskText + '</span>' +
+                        (done ? '<span class="text-[10px] font-bold text-emerald-600 no-underline whitespace-nowrap shrink-0">✅ DONE</span>' : '') +
                     '</label>';
                 }).join('') : '';
 
                 html += 
-                    '<div class="p-5 rounded-2xl space-y-3 ' + cardBg + '">' +
-                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-2.5 gap-2">' +
-                            '<span class="px-3 py-1 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
-                            '<h3 class="font-cinzel font-bold text-slate-900 text-base sm:text-lg flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
+                    '<div class="p-3.5 rounded-2xl space-y-2 ' + cardBg + '">' +
+                        '<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-200 pb-1.5 gap-1">' +
+                            '<span class="px-2 py-0.5 bg-amber-100 text-amber-900 font-mono font-bold text-xs rounded-md w-fit shrink-0">⏰ ' + evt.time + '</span>' +
+                            '<h3 class="font-cinzel font-bold text-slate-900 text-xs sm:text-sm flex-1">' + (evt.isTalli ? '💍 ' : '') + evt.title + '</h3>' +
                         '</div>' +
-                        '<div class="space-y-2.5 pt-1">' + tasksHtml + '</div>' +
+                        '<div class="space-y-1.5 pt-0.5">' + tasksHtml + '</div>' +
                     '</div>';
             });
 
             html += 
                 '</div>' +
-                '<div class="pt-4 flex justify-center">' +
-                    '<button onclick="openResetModal()" class="px-4 py-2 text-slate-400 hover:text-slate-600 font-cinzel font-bold text-xs rounded-xl transition underline">' +
+                '<div class="pt-3 flex justify-center">' +
+                    '<button onclick="window.openResetModal()" class="px-4 py-1.5 text-slate-400 hover:text-slate-600 font-cinzel font-bold text-xs rounded-xl transition underline">' +
                         'RESET ALL CHECKLIST' +
                     '</button>' +
                 '</div>';
@@ -1406,13 +1430,13 @@
         }
 
         function openResetModal() {
-            var modal = document.getElementById('reset-modal');
-            if (modal) modal.classList.remove('hidden');
+            var elem = document.getElementById('reset-modal');
+            if (elem) elem.classList.remove('hidden');
         }
 
         function closeResetModal() {
-            var modal = document.getElementById('reset-modal');
-            if (modal) modal.classList.add('hidden');
+            var elem = document.getElementById('reset-modal');
+            if (elem) elem.classList.add('hidden');
         }
 
         function executeResetAll() {
@@ -1467,7 +1491,7 @@
             }
         }
 
-        // BIND FUNCTIONS EXPLICITLY TO WINDOW FOR INLINE HTML ONCLICK ATTRIBUTES
+        // BIND ALL HANDLERS TO GLOBAL WINDOW OBJECT
         window.switchBranch = switchBranch;
         window.switchTab = switchTab;
         window.setCarStatus = setCarStatus;
@@ -1476,13 +1500,8 @@
         window.closeResetModal = closeResetModal;
         window.executeResetAll = executeResetAll;
         window.renderAllViews = renderAllViews;
-        window.renderAgendaView = renderAgendaView;
-        window.renderDetailsView = renderDetailsView;
-        window.renderTransportView = renderTransportView;
-        window.renderChecklistView = renderChecklistView;
-        window.updateCountdowns = updateCountdowns;
 
-        // BOOT INITIAL RENDER ON WINDOW LOAD
+        // INITIALIZE ON LOAD
         window.onload = function() {
             switchBranch(currentBranch);
             renderAllViews();
